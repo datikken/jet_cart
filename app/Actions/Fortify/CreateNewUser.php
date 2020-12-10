@@ -3,12 +3,11 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Inertia\Inertia;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+use Laravel\Fortify\Contracts\CreatesNewUsers;
 
-class CreateNewUser
+class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
@@ -18,26 +17,18 @@ class CreateNewUser
      * @param  array  $input
      * @return \App\Models\User
      */
-    public function create(Request $request)
+    public function create(array $input)
     {
-        $name = $request->name;
-        $email = $request->email;
-        $pass = $request->password;
+        Validator::make($input, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => $this->passwordRules(),
+        ])->validate();
 
-        $state = $request->validateWithBag('createNewUser', [
-            'name' => 'required',
-            'email' => ['required', 'max:50', 'email', Rule::unique('users')],
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required|min:6',
-            'policy_confirm' => 'accepted'
+        return User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
         ]);
-
-        User::create([
-            'name' => $name,
-            'email' => $email,
-            'password' => Hash::make($pass)
-        ]);
-
-        return Inertia::render('Dashboard');
     }
 }
