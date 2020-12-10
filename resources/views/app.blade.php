@@ -7,16 +7,10 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=smoothscroll,NodeList.prototype.forEach,Promise,Object.values,Object.assign" defer></script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=String.prototype.startsWith" defer></script>
-
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/vendors/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/vendors/owl.theme.default.min.css') }}">
-
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         <!-- Scripts -->
