@@ -1,0 +1,116 @@
+.order_list {
+    width: 340px;
+
+   &_deliveryAdress {
+       font-family: $font;
+       font-size: 11px;
+       line-height: 17px;
+       letter-spacing: 0.02em;
+       color: $dblack;
+   }
+
+  &-wrap {
+      border-left: 1px solid $light_gray;
+      padding: 40px 0 30px 40px;
+
+    .proceedPayment-btn {
+      margin-top: 50px;
+      width: 230px;
+      height: 40px;
+
+      .action_btn {
+        width: 100%!important;
+      }
+    }
+
+    &_footer {
+        margin-bottom: 17px;
+
+      &_final {
+          border-bottom: 1px solid $light_gray;
+          padding-bottom: 17px;
+          margin-bottom: 40px;
+      }
+
+      &-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+
+        &_item {
+          font-family: $semifont;
+          font-size: 12px;
+          line-height: 14px;
+          letter-spacing: 0.02em;
+          color: $black;
+        }
+      }
+    }
+
+    &_inner {
+      &-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        border-bottom: 1px solid $light_gray;
+        height: 40px;
+
+          &:first-child {
+              padding-bottom: 30px;
+              border-bottom: none;
+          }
+
+        &_item {
+            text-align: right;
+
+            &:first-child {
+                text-align: left;
+            }
+
+            &:last-child {
+                text-align: right;
+            }
+
+          &-text {
+            font-family: $font;
+            font-size: 12px;
+            line-height: 14px;
+            letter-spacing: 0.02em;
+            color: $black;
+            max-width: 130px;
+            display: block;
+          }
+
+          &-head {
+            font-family: $semifont;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 14px;
+            letter-spacing: 0.02em;
+            color: $black;
+          }
+        }
+      }
+    }
+
+    &_item {
+      &-head {
+        h1 {
+          font-family: $semifont;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 14px;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          color: $dblack;
+          padding-bottom: 17px;
+          width: 100%;
+          border-bottom: 1px solid $yellow;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
