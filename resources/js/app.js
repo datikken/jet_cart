@@ -36,6 +36,3 @@ Vue.use(Fragment.Plugin)
 Vue.use(VueMeta)
 
 Vue.mixin({methods: {route}});
-
-
-console.log(app)
