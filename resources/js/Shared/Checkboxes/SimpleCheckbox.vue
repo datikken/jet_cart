@@ -34,14 +34,3 @@
         }
     }
 </script>
-
-<style>
-    .checkbox-wrap_arrow {
-        display: block;
-        height: 80%;
-        width: 80%;
-        transform: rotate(90deg);
-        margin-top: 2.5px;
-        margin-left: 0;
-    }
-</style>
