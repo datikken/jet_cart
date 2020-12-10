@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Inertia\Inertia;
 
 class WelcomeController extends Controller
 {
+    private $sldCtrl;
+    private $prdCtrl;
+
+    public function __construct(ProductController $prdCtrl, SliderController $sldCtrl)
+    {
+        $this->prdCtrl = $prdCtrl;
+        $this->sldCtrl = $sldCtrl;
+    }
+
     public function index()
     {
-        $ten = app()->call('App\Http\Controllers\ProductController::getTenProductsWithImages');
+        $ten = $this->prdCtrl->getTenProductsWithImages();
+        $slides = $this->sldCtrl->getMainSliderImages();
 
         return Inertia::render('Welcome', [
-            'tenProducts' => $ten
+            'tenProducts' => $ten,
+            'slides' => $slides
         ]);
     }
 }

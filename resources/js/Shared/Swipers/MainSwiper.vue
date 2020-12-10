@@ -1,10 +1,7 @@
 <template>
     <swiper ref="mySwiper" :options="swiperOptions">
-        <swiper-slide>
-            <img src="https://recart.me/storage/main_slider_images/image.png" alt="">
-        </swiper-slide>
-        <swiper-slide>
-            <img src="https://static.re-store.ru/upload/iblock/89a/89a2410be4b62f6e5463667078521f74.jpg" alt="">
+        <swiper-slide v-for="slide in slides" :key="slide.name">
+            <ImageComp :path="slide.path" alt_text="slide" />
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -12,6 +9,7 @@
 
 <script>
     import {Swiper, SwiperSlide, directive} from 'vue-awesome-swiper'
+    import ImageComp from '@/Shared/Image/ImageComp'
 
     export default {
         name: 'MainSwiper',
@@ -25,17 +23,15 @@
             }
         },
         components: {
-            Swiper, SwiperSlide
+            Swiper, SwiperSlide, ImageComp
         },
         computed: {
             swiper() {
                 return this.$refs.mySwiper.$swiper
+            },
+            slides() {
+                return this.$page.slides.original
             }
-        },
-        mounted() {
-            console.log('mounted swiper', this);
-
-            // console.log('Current Swiper instance object', this.swiper)
         }
     }
 </script>

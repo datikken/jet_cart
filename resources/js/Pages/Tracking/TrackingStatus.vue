@@ -1,9 +1,16 @@
 <template>
-    <h1>Tracking statut {{ state }}</h1>
+    <TrackingResults/>
 </template>
 
 <script>
+    import TrackingResults from '@/Shared/Tracking/TrackingResults'
+    import MainLayout from '@/Layouts/MainLayout';
+
     export default {
-        name: "TrackingStatus"
+        name: "TrackingStatus",
+        components: {
+            TrackingResults
+        },
+        layout: MainLayout
     }
 </script>
