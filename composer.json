@@ -26,7 +26,6 @@
         "laravel/tinker": "^2.5",
         "reinink/remember-query-strings": "^0.1.0",
         "spatie/laravel-permission": "^3.18",
-        "spatie/nova-tags-field": "^3.1",
         "tightenco/ziggy": "^0.9.4",
         "vyuldashev/nova-permission": "^2.10"
     },

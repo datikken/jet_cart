@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use Spatie\TagsField\Tags;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -46,7 +45,7 @@ class Post extends Resource
     {
         return [
             ID::make('ID', 'id'),
-            Tags::make('Tags'),
+            Text::make('category'),
             Text::make('heading'),
             Text::make('description'),
             BelongsTo::make('User')->rules('required'),
