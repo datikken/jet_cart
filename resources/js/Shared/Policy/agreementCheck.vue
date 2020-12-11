@@ -27,7 +27,7 @@
 </template>
 
 <script>
-    import SimpleCheckbox from '../Checkboxes/SimpleCheckbox'
+    import SimpleCheckbox from '@/Shared/Checkboxes/SimpleCheckbox'
     import {mapState, mapActions} from 'vuex'
 
     export default {

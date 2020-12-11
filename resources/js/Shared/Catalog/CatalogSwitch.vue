@@ -53,7 +53,7 @@
     import {mapActions} from 'vuex';
 
     export default {
-        name: "catalogSwitch",
+        name: "CatalogSwitch",
         data: function() {
             return {
                 descending: true

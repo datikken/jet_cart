@@ -8,10 +8,8 @@
 </template>
 
 <script>
-    import ResizeObserver from '@/@/js/functions/ResizeObserver';
-    import utils from '@/@/js/functions/utils';
-    import Filters from '../Filters/Filters';
-    import Viewed from '../Viewed/Viewed';
+    import Filters from '@/Shared/Filters/Filters';
+    import Viewed from '@/Shared/Viewed/Viewed';
 
     export default {
         name: "LeftColumn",

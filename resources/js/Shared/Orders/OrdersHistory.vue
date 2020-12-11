@@ -110,7 +110,7 @@
 
 <script>
     import LastOrder from './LastOrder'
-    import TextBtn from '../Btns/TextBtn'
+    import TextBtn from '../btns/TextBtn'
     import {mapActions, mapGetters, mapState} from 'vuex'
 
     export default {
@@ -161,6 +161,6 @@
     }
 </script>
 
-<style>
+<style scoped>
 
 </style>

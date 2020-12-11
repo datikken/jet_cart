@@ -2,13 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Http\Controllers\ProductController;
 use Inertia\Inertia;
 
 class CatalogController extends Controller
 {
+    public function __construct(ProductController $prdCtrl)
+    {
+        $this->prdCtrl = $prdCtrl;
+    }
+
     public function index()
     {
-        return Inertia::render('Catalog/Catalog');
+        $prdcts = Product::all();
+        $ten = $this->prdCtrl->getTenProductsWithImages();
+
+        return Inertia::render('Catalog/Catalog',[
+            'tenProducts' => $ten,
+            'products' => $prdcts
+        ]);
     }
 }

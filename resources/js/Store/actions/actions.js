@@ -83,9 +83,6 @@ let actions = {
     VALIDATE_DELIVERY_ADRESS(context, form) {
         context.commit('validateDeliveryAdress', form);
     },
-    GET_ALL_PRODUCTS(context) {
-        context.commit('getAllProducts');
-    },
     GET_ORDERS_INFO(context) {
         context.commit('getOrdersInfo');
     },

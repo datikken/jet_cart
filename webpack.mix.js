@@ -26,7 +26,8 @@ mix.js('resources/js/app.js', 'public/js')
         resolve: {
             alias: {
                 vue$: 'vue/dist/vue.runtime.esm.js',
-                '@': path.resolve('resources/js')
+                '@': path.resolve('resources/js'),
+                'NODE': path.resolve('node_modules')
             },
         }
     })

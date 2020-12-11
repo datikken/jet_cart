@@ -26,14 +26,6 @@
         data: () => ({
             allViewed: []
         }),
-        created() {
-            this.GET_VIEWED_PRODUCTS();
-        },
-        methods: {
-            ...mapActions([
-                'GET_VIEWED_PRODUCTS'
-            ]),
-        },
         computed: {
             allProducts() {
                 return  this.$page.tenProducts.original;

@@ -78,8 +78,8 @@
 
 <script>
     import {mapActions, mapGetters} from 'vuex'
-    import TextBtn from '../Btns/TextBtn'
-    // import router from '@/router/router'
+    import TextBtn from '../btns/TextBtn'
+    // import router from '../../router/router'
 
     export default {
         name: "OrdersList",

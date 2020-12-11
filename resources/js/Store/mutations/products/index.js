@@ -1,45 +1,3 @@
-import axios from "axios";
-
-let getAllProducts = function (state) {
-    let that = this;
-
-    if (state.products.length === 0) {
-        axios.get('/catalogCartridge')
-            .then(response => {
-                response.data.forEach((el) => {
-                    let params = JSON.parse(el.params);
-                    let cape = JSON.parse(el.cape);
-                    let newCape = {};
-
-                    cape.map((obj) => {
-                        Object.keys(obj).forEach(function (key) {
-                            let str = obj[key];
-                            newCape[key] = str.trim();
-                        });
-                    })
-
-                    el.price = Math.ceil(el.price);
-                    el.params = params;
-                    el.cape = newCape;
-                });
-
-                state.products = response.data;
-                state.filteredProducts = state.products;
-            })
-
-            .then(() => {
-                that.dispatch('COLLECT_FILTERS');
-                that.dispatch('SWITCH_PRODUCTS_LOADER');
-            })
-
-            .catch(err => {
-                console.log(err);
-            });
-    }
-
-    return state.products;
-}
-
 let getFilteredProducts = function (state, payload) {
     state.searchProducts = [];
 
@@ -259,7 +217,6 @@ let setProductViewed = function (state, {pid}) {
 }
 
 export {
-    getAllProducts,
     getFilteredProducts,
     addProductToCart,
     getProductModelFilters,

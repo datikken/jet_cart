@@ -12,7 +12,6 @@ import {sendGoogleAnalytics} from './utils/analytics'
 import {changeProgressStep} from './cart/utils'
 
 import {
-    getAllProducts,
     getFilteredProducts,
     addProductToCart,
     getProductModelFilters,
@@ -38,7 +37,6 @@ let mutations = {
     //cart
     addProductToCart,
     //products
-    getAllProducts,
     getFilteredProducts,
     getProductModelFilters,
     getProductTypeFilters,
@@ -247,7 +245,7 @@ let mutations = {
     }
     ,
     catalogLoadMore(state) {
-        state.catalogPerPage = state.catalogPerPage + state.catalogPerPage;
+        state.catalogPerPage = state.catalogPerPage + 15;
     }
     ,
     switchCatalogLayout(state) {
