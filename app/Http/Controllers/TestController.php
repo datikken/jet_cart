@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Helpers\Converter;
-use App\Http\Controllers\ApiController;
-use Illuminate\Support\Facades\Auth;
+use App\Facades\Cart;
 
 class TestController extends Controller
 {
@@ -74,18 +73,18 @@ class TestController extends Controller
 
     public function index()
     {
+        Cart::add('293ad', 'Product 1', 1, 9.99);
+
+        $cart = Cart::content();
+
+        dd($cart);
 
 
 //        $prd = Product::id(1);
-
-        return $u;
-
 //        $fileJson = $this->parse();
-//
 //        $converter = new Converter();
-//
+
 //        foreach ($fileJson as $product) {
-//
 //            $oldVal = (array) $product;
 //            $newProduct = array();
 //            $converter = new Converter();
@@ -100,7 +99,6 @@ class TestController extends Controller
 //        }
 //
 //        dump(count($fileJson));
-//
 //        return response()->json('success');
     }
 
