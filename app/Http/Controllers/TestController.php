@@ -73,7 +73,6 @@ class TestController extends Controller
 
     public function index()
     {
-        Cart::add('293ad', 'Product 1', 1, 9.99);
 
 
 //        $prd = Product::id(1);
