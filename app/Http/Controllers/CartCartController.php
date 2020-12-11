@@ -8,18 +8,18 @@ use stdClass;
 
 class CartCartController extends Controller
 {
-//    public function index()
-//    {
+    public function index()
+    {
+
+//        return Inertia::render('Cart/Cart', [
+//            'cartItems' => ''
+//        ]);
 //
-////        return Inertia::render('Cart/Cart', [
-////            'cartItems' => ''
-////        ]);
-////
-////        return Inertia::render('Cart/Empty', [
-////            'cartItems' => ''
-////        ]);
-//    }
-    public function index() {}
+//        return Inertia::render('Cart/Empty', [
+//            'cartItems' => ''
+//        ]);
+    }
+
     public function show() {}
     public function get() {}
     public function create() {}
