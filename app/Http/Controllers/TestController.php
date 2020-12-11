@@ -75,10 +75,6 @@ class TestController extends Controller
     {
         Cart::add('293ad', 'Product 1', 1, 9.99);
 
-        $cart = Cart::content();
-
-        dd($cart);
-
 
 //        $prd = Product::id(1);
 //        $fileJson = $this->parse();

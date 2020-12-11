@@ -71,7 +71,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 /*
  * Cart routes
  */
-Route::get('/checkCartState', [CartController::class, 'checkCartState'])
+Route::get('/checkCartState', [CartController::class, 'show'])
     ->name('checkCartState');
 
 Route::get('/cart', [CartController::class, 'index'])
