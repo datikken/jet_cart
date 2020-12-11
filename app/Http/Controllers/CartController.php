@@ -11,8 +11,6 @@ class CartController extends Controller
     {
         $cart = Cart::content();
 
-        dd($cart);
-
         return response()->json($cart);
     }
 }
