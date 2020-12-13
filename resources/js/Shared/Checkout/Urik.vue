@@ -234,14 +234,3 @@
         }
     }
 </script>
-
-<style>
-    .urik_btns_wrap {
-        display: flex;
-        width: 100%;
-        margin-top: 60px;
-    }
-    .urik_btns_wrap .proceed_flat_btn {
-        margin-left: 40px;
-    }
-</style>

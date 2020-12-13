@@ -54,7 +54,7 @@
 
 <script>
     import MainLayout from '@/Layouts/MainLayout'
-    import TextBtn from '@/Shared/Btns/TextBtn'
+    // import TextBtn from '@/Shared/Btns/TextBtn'
     import DashboardForms from '@/Shared/Dashboard/DashboardForms'
     import {Fragment} from 'vue-fragment'
     import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
@@ -63,7 +63,6 @@
         name: "Dashboard",
         layout: MainLayout,
         components: {
-            TextBtn,
             DashboardForms,
             Fragment,
             Breadcrumbs
