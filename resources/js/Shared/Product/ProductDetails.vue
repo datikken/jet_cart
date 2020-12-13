@@ -4,7 +4,6 @@
         <div class="details_wrap">
 
 
-
             <div class="details_wrap-slider">
 
                 <swiper ref="mySwiper" :options="swiperOptions" class="gallery-top">
@@ -24,14 +23,25 @@
                 </swiper>
 
 
-                <div class="swiper-container gallery-thumbs">
-                    <div class="swiper-wrapper">
+                <swiper :options="thumbsOtions" class="gallery-thumbs">
+                    <swiper-slide>
                         <div class="swiper-slide details_slide"
                              style="background-image:url('/images/unnecessary/owl-swiper.svg')"></div>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <div class="swiper-slide details_slide"
+                             style="background-image:url('/images/unnecessary/image.svg')"></div>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <div class="swiper-slide details_slide"
+                             style="background-image:url('/images/unnecessary/owl-swiper.svg')"></div>
+                    </swiper-slide>
+                    <div class="swiper-pagination" slot="pagination">
+                        <div class="swiper-button-next gallery-thumbs-next"></div>
+                        <div class="swiper-button-prev gallery-thumbs-prev"></div>
                     </div>
-                    <div class="swiper-button-next gallery-thumbs-next"></div>
-                    <div class="swiper-button-prev gallery-thumbs-prev"></div>
-                </div>
+                </swiper>
+
             </div>
 
 
@@ -179,11 +189,11 @@
                         <div class="cart_wrap-item_inner-table_row-col col_amount">
                             <span>Количество (шт)</span>
                         </div>
-                        <AmountBtn text="" :id="product.id" />
+                        <AmountBtn text="" :id="product.id"/>
                     </div>
                     <div class="details_wrap-info_item-right">
                         <a href="#" class="" data-url="">
-                            <TextBtn text="в корзину" className="magic_btn" />
+                            <TextBtn text="в корзину" className="magic_btn"/>
                         </a>
                     </div>
                 </div>
@@ -216,6 +226,19 @@
                 pagination: {
                     el: '.swiper-pagination'
                 }
+            },
+            thumbsOtions: {
+                spaceBetween: 10,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                touchRatio: 0.2,
+                slideToClickedSlide: true,
+                loop: true,
+                navigation: {
+                    nextEl: '.gallery-thumbs-next',
+                    prevEl: '.gallery-thumbs-prev',
+                },
+                loopedSlides: 4
             }
         }),
         created() {
