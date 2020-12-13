@@ -16,7 +16,6 @@
 
 <script>
     import ViewedItem from './ViewedItem';
-    import {mapActions, mapGetters} from 'vuex';
 
     export default {
         name: "Viewed",

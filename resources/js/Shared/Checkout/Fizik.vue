@@ -76,7 +76,6 @@
             }
         },
         mounted() {
-           this.GET_USERS_INFO();
            this.fillInputsData();
            this.clearInputsOnFocus();
            this.CHANGE_PROGRESS_STEP(1);
@@ -91,7 +90,6 @@
                 'SET_CUSTOMER_FIO',
                 'CHANGE_PROGRESS_STEP',
                 'SCROLL_TO_TOP',
-                'GET_USERS_INFO',
                 'REFRESH_CUTOMER_DATA',
                 'SHOW_NOTIFICATION',
                 'SET_OFERTA_POLICY_STATE'

@@ -6,41 +6,41 @@
             <div class="dash_left">
                 <div class="dash_left-wrap">
                     <div class="dash_left-wrap_item dash_active">
-                        <a class="dash_left-wrap_item-text">
+                        <span class="dash_left-wrap_item-text">
                             <span>Dashboard</span>
-                        </a>
+                        </span>
                         <div class="dash_left-wrap_item-icon"
                              style="background-image: url('/images/dash/dash_user.svg')"></div>
                     </div>
 
                     <div class="dash_left-wrap_item">
-                        <a class="dash_left-wrap_item-text">
+                        <span class="dash_left-wrap_item-text">
                             <span>Заказы</span>
-                        </a>
+                        </span>
                         <div class="dash_left-wrap_item-icon"
                              style="background-image: url('/images/dash/dash_orders.svg')"></div>
                     </div>
 
                     <div class="dash_left-wrap_item">
-                        <a class="dash_left-wrap_item-text">
+                        <span class="dash_left-wrap_item-text">
                             <span>Адреса</span>
-                        </a>
+                        </span>
                         <div class="dash_left-wrap_item-icon"
                              style="background-image: url('/images/dash/dash_addr.svg')"></div>
                     </div>
 
                     <div class="dash_left-wrap_item">
-                        <a class="dash_left-wrap_item-text">
+                        <span class="dash_left-wrap_item-text">
                             <span>Заполнить аккаунт</span>
-                        </a>
+                        </span>
                         <div class="dash_left-wrap_item-icon"
                              style="background-image: url('/images/dash/dash_fill.svg')"></div>
                     </div>
 
-                    <div class="dash_left-wrap_item dash_logout">
-                        <a class="dash_left-wrap_item-text">
+                    <div class="dash_left-wrap_item dash_logout" @click="logout">
+                        <span class="dash_left-wrap_item-text">
                             <span>Выйти</span>
-                        </a>
+                        </span>
                     </div>
 
                 </div>
@@ -67,6 +67,11 @@
             DashboardForms,
             Fragment,
             Breadcrumbs
+        },
+        methods: {
+            logout() {
+                this.$inertia.post('logout');
+            }
         }
     }
 </script>

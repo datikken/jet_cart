@@ -125,15 +125,10 @@
         methods: {
             ...mapActions([
                 'GET_ORDERS_INFO',
-                'GET_USERS_INFO',
                 'GET_SINGLE_ORDER_INFO'
             ]),
             repeatOrder(id) {
                 console.warn('order repeat', id);
-
-
-
-
             },
             viewDetails(id) {
                 this.GET_SINGLE_ORDER_INFO(id);
@@ -156,7 +151,6 @@
         },
         mounted() {
             this.GET_ORDERS_INFO();
-            this.GET_USERS_INFO();
         }
     }
 </script>

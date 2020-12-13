@@ -1,15 +1,14 @@
 <?php
 
-
 namespace App\Actions\Fortify;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
+use Illuminate\Validation\Rule;
 
-class CreateNewUser implements CreatesNewUsers
+class CreateNewUser
 {
     use PasswordValidationRules;
 

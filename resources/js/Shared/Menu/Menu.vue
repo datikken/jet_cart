@@ -52,9 +52,11 @@
                 <div class="menu_wrapper-item_cart">
                     <inertia-link :href="route('cart')">
                         <div class="menu_wrapper-item_cart_icon" :if="this.cart">
-                            <img src="/images/menu/cart.svg" alt="cart" v-if="this.cart.totalQuantity" data-cartIcon/>
-                            <img src="/images/menu/empty_cart.svg" alt="cart" v-else data-cartIcon/>
-                            <span class="menu_wrapper-item_cart_icon-amount" data-cartAmountVal>{{ this.cart.totalQuantity }}</span>
+
+                            <img src="/images/menu/cart.svg" alt="cart" v-if="this.cart.qnt > 0" />
+                            <img src="/images/menu/empty_cart.svg" alt="cart" v-else />
+
+                            <span class="menu_wrapper-item_cart_icon-amount" v-if="this.cart.qnt > 0">{{ this.cart.qnt }}</span>
                         </div>
                     </inertia-link>
                 </div>
@@ -72,37 +74,37 @@
     import SearchList from '../Search/SearchList'
     import DesktopMainMenuDropDown from './DesktopMainMenuDropDown'
     import MobileMainMenuDropDown from './MobileMainMenuDropDown'
-    import {mapActions} from 'vuex';
+    import {mapActions, mapState} from 'vuex';
 
     export default {
         name: "Menu",
+        data: () => ({
+            cartVal: {}
+        }),
         components: {
             Input,
             SearchList,
             DesktopMainMenuDropDown,
             MobileMainMenuDropDown
         },
-        computed: {
-            cart() {
-                if(this.$store.state.cart) {
-                    return this.$store.state.cart
-                } else {
-                    return {};
-                }
-            }
-        },
         mounted() {
             this.fixedMenuOnScroll();
             this.checkMenuFixedOrNot();
-        },
-        created() {
             this.CHECK_CART_STATE();
-            this.GET_USERS_INFO();
+        },
+        computed: {
+            ...mapState([
+                'cart'
+            ])
+        },
+        watch: {
+            cart(val, oldVal) {
+                this.cartVal = val ? val : oldVal
+            }
         },
         methods: {
             ...mapActions([
-                'CHECK_CART_STATE',
-                'GET_USERS_INFO'
+                'CHECK_CART_STATE'
             ]),
             checkMenuFixedOrNot() {
                 if (window.pageYOffset > 0 && this.sresBlock) {

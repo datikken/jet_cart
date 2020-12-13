@@ -77,6 +77,9 @@ Route::get('/checkCartState', [CartController::class, 'show'])
 Route::get('/cart', [CartController::class, 'index'])
     ->name('cart');
 
+Route::post('/addProductToCart', [CartController::class, 'add'])
+    ->name('addProductToCart');
+
 
 /*
  * Test routes

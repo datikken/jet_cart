@@ -28,27 +28,27 @@ let getFilteredProducts = function (state, payload) {
 
 let addProductToCart = function (state, {id, amount}) {
     let that = this;
-    let url = `/products/addToCartAjaxGet/${id}`;
 
-    $.ajaxSetup({
+    fetch(`/addProductToCart`, {
+        method: "POST",
         headers: {
+            'Content-Type': 'application/json',
             'X-CSRF-TOKEN': window.token
-        }
-    });
-    $.ajax({
-        method: "get",
-        url: `${url}`,
-        data: {
-            id,
-            amount
         },
-        success: function (data) {
-            that.dispatch('fixCartStatus', {data})
-        },
-        error: function (error) {
-            console.warn(error);
-        }
-    });
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            id, amount
+        })
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log('new cart', data);
+
+            that.dispatch('CHECK_CART_STATE');
+        })
 
     let gObj = {
         category: 'catalog',
@@ -56,6 +56,7 @@ let addProductToCart = function (state, {id, amount}) {
         eventLabel: 'add product to cart',
         eventValue: `${id} - ${amount}`
     };
+
 
     this.dispatch('SEND_GOOGLE_ANALYTICS', gObj);
 }

@@ -27,7 +27,10 @@
                                 alt="rub"
                             />
                         </div>
-                        <div class="carousel_card-wrapper_item-buttons_cart ajaxGETproduct animated_btn"
+
+                        <div
+                            @click="addProductToCart"
+                             class="carousel_card-wrapper_item-buttons_cart animated_btn"
                              data-url="">
                             <img
                                 class="carousel_card-wrapper_item-buttons_cart-item"
@@ -35,6 +38,8 @@
                                 alt="cart"
                             />
                         </div>
+
+
                     </div>
                 </div>
 
@@ -45,7 +50,8 @@
 </template>
 
 <script>
-    import {getProductImage} from "@/functions/getProductImage";
+    import {getProductImage} from "@/functions/getProductImage"
+    import {mapActions} from 'vuex'
 
     export default {
         name: "OwlCard",
@@ -54,10 +60,14 @@
         }),
         props: ['prdct'],
         methods: {
+            ...mapActions(['ADD_PRODUCT_TO_CART']),
             modifyPrImage() {
                 let path = JSON.parse(this.prdct.photo);
 
                 return path.small;
+            },
+            addProductToCart() {
+                this.ADD_PRODUCT_TO_CART({id: this.prdct.id, amount: 1});
             }
         }
     }

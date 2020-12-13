@@ -600,13 +600,17 @@ let mutations = {
     }
     ,
     checkCartState(state) {
-        axios.get('/checkCartState')
-            .then(response => {
-                state.cart = response.data;
-                // localStorage.setItem('cart', JSON.stringify(response.data));
+        fetch('/checkCartState', {
+            method: "GET"
+        })
+            .then((response) => {
+                return response.json();
             })
+            .then((data) => {
+                state.cart = data;
+            });
 
-        return state.cart
+        return state.cart;
     },
     refreshCutomerData(state, data) {
         fetch('/home/collectProfileData', {
@@ -653,17 +657,6 @@ let mutations = {
                 console.warn(error);
             }
         });
-    }
-    ,
-    getUserInfo(state) {
-        // if (!state.user) {
-        //     axios.get('/getUserInfo')
-        //         .then(response => {
-        //             state.user = response.data;
-        //         });
-        //
-        //     return state.user
-        // }
     },
     setCloseListener(state, payload) {
         state.closeListener = payload;

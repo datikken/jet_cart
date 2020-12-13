@@ -34,7 +34,7 @@
             }
         },
         mounted() {
-            console.log('Current Swiper instance object', this.swiper)
+            // console.log('Current Swiper instance object', this.swiper)
         }
     }
 </script>

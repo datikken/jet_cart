@@ -134,9 +134,6 @@ let actions = {
     SET_CUSTOMER_FIO(context, obj) {
         context.commit('setCustomerFio', obj);
     },
-    GET_USERS_INFO(context) {
-        context.commit('getUserInfo');
-    },
     ADD_PRODUCT_TO_CART(context, {id, amount}) {
         context.commit('addProductToCart', {id, amount})
     },
@@ -167,15 +164,6 @@ let actions = {
     },
     SHOW_NOTIFICATION(context, msg, type) {
         context.commit('showNotification', msg, type);
-    },
-    fixCartStatus(state, {data}) {
-        let amount = data.totalQuantity;
-        let price = data.totalPrice;
-
-        $('[data-cartIcon]').attr('src', '/images/menu/cart.svg');
-
-        $('[data-cartamountval]').text(amount);
-        $('[data-cartpriceval]').text(price);
     }
 };
 
