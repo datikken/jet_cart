@@ -4,15 +4,26 @@
         <div class="details_wrap">
 
 
+
             <div class="details_wrap-slider">
-                <div class="swiper-container gallery-top">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide details_slide"
-                             style="background-image:url('/images/owl.vide.play.png')"></div>
+
+                <swiper ref="mySwiper" :options="swiperOptions" class="gallery-top">
+                    <swiper-slide>
                         <div class="swiper-slide details_slide"
                              style="background-image:url('/images/unnecessary/owl-swiper.svg')"></div>
-                    </div>
-                </div>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <div class="swiper-slide details_slide"
+                             style="background-image:url('/images/unnecessary/image.svg')"></div>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <div class="swiper-slide details_slide"
+                             style="background-image:url('/images/unnecessary/owl-swiper.svg')"></div>
+                    </swiper-slide>
+                    <div class="swiper-pagination" slot="pagination"></div>
+                </swiper>
+
+
                 <div class="swiper-container gallery-thumbs">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide details_slide"
@@ -186,15 +197,26 @@
 <script>
     import TextBtn from '@/Shared/Btns/TextBtn'
     import AmountBtn from '@/Shared/Btns/AmountBtn'
+    import {Swiper, SwiperSlide, directive} from 'vue-awesome-swiper'
 
     export default {
         name: "ProductDetails",
         components: {
             TextBtn,
-            AmountBtn
+            AmountBtn,
+            Swiper,
+            SwiperSlide
+        },
+        directives: {
+            swiper: directive
         },
         data: () => ({
-            product: false
+            product: false,
+            swiperOptions: {
+                pagination: {
+                    el: '.swiper-pagination'
+                }
+            }
         }),
         created() {
             let old = this.$page.product;
@@ -202,6 +224,14 @@
             newProduct.params = JSON.parse(old.params);
 
             this.product = newProduct;
+        },
+        computed: {
+            swiper() {
+                return this.$refs.mySwiper.$swiper
+            },
+            slides() {
+                return this.$page.images.original
+            }
         }
     }
 </script>

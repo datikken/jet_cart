@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <link href="/images/icons/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- Swiper library -->
+    <link href="https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@5.3.6/js/swiper.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.15/dist/css/uikit.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.15/dist/js/uikit.min.js"></script>
