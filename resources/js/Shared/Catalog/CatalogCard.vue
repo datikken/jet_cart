@@ -17,10 +17,10 @@
                 </div>
             </div>
             <div class="product_wrapper-item product_wrapper-itemContent">
-                <a class="product_wrapper-item_image product_link" :href="`/product/${data.id}`">
+                <inertia-link class="product_wrapper-item_image product_link" :href="route('catalog.view', data.id)">
                     <img onerror="this.src = '/images/unnecessary/owl-swiper.svg';"
-                         :src="`/product_images/${this.params.brend}/SMALL/${data.photo}.png`" alt="">
-                </a>
+                    :src="`/product_images/${this.params.brend}/SMALL/${data.photo}.png`" alt="">
+                </inertia-link>
                 <a class="product_wrapper-item_overlay" href="#modal-1" uk-toggle="target: #modal-1" :data-id="data.id" @click="loadProductModal(data.id)">
                     <div class="product_wrapper-item_overlay_wrapper">
                         <div class="product_wrapper-item_overlay_wrapper-item">

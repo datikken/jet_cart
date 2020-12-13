@@ -40,6 +40,8 @@ Route::get('/', [WelcomeController::class, 'index'])
 
 Route::get('/catalog', [CatalogController::class, 'index'])
     ->name('catalog');
+Route::get('/catalog/{id}', [CatalogController::class, 'get'])
+    ->name('catalog.view');
 
 Route::get('/information', [InformationController::class, 'index'])
     ->name('information');

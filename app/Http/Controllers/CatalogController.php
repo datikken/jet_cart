@@ -24,4 +24,13 @@ class CatalogController extends Controller
             'products' => $prdCts
         ]);
     }
+
+    public function get($id)
+    {
+        $prdct = Product::where('id', $id)->get();
+
+        return Inertia::render('Catalog/CatalogDetails',[
+            'product' => $prdct[0]
+        ]);
+    }
 }

@@ -204,12 +204,3 @@
         }
     }
 </script>
-
-<style>
-    .cart_check-wrap_item-group_btn {
-        margin-top: 24px;
-    }
-    .cart_save_data {
-        margin-top: 10px;
-    }
-</style>
