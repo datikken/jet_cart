@@ -9,13 +9,10 @@ use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use App\Models\Product;
-use App\Http\Controllers\ApiController;
-
 
 class GetProducts extends Action
 {
     use InteractsWithQueue, Queueable;
-
     /**
      * Perform the action on the given models.
      *
@@ -40,7 +37,6 @@ class GetProducts extends Action
 
     public function createProductsDto($dto)
     {
-        $converter = new Converter();
         $newDto = array();
 
         foreach ($dto as $key=>$val) {
@@ -49,11 +45,11 @@ class GetProducts extends Action
 
         foreach ($newDto as $key=>$val) {
             if(gettype($val) === 'array') {
-                $newDto[$key] = $converter->arrObjToStr($val);
+                $newDto[$key] = $this->converter->arrObjToStr($val);
             }
 
             if ($key === 'params') {
-                $newDto['params'] = $converter->arrayObjKeyPairs($val);
+                $newDto['params'] = $this->converter->arrayObjKeyPairs($val);
             }
 
             if($key === 'cape') {
@@ -92,6 +88,7 @@ class GetProducts extends Action
         $fileJson = $this->parse();
 
         $converter = new Converter();
+        $this->converter = $converter;
 
         foreach ($fileJson as $product) {
 
@@ -106,8 +103,6 @@ class GetProducts extends Action
 
             $this->createProductsDto($newProduct);
         }
-
-        dump(count($fileJson));
 
         return response()->json('success');
     }

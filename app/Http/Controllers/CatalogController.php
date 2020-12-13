@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Converter;
 use App\Models\Product;
-use App\Http\Controllers\ProductController;
 use Inertia\Inertia;
 
 class CatalogController extends Controller
 {
+
     public function __construct(ProductController $prdCtrl)
     {
         $this->prdCtrl = $prdCtrl;
@@ -15,12 +16,12 @@ class CatalogController extends Controller
 
     public function index()
     {
-        $prdcts = Product::all();
+        $prdCts = Product::all();
         $ten = $this->prdCtrl->getTenProductsWithImages();
 
         return Inertia::render('Catalog/Catalog',[
             'tenProducts' => $ten,
-            'products' => $prdcts
+            'products' => $prdCts
         ]);
     }
 }

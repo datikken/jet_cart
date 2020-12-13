@@ -72,22 +72,3 @@
         }
     }
 </script>
-
-<style>
-    .agreement_text {
-        margin: 0 0 0 30px;
-    }
-
-    .agreement_prgf {
-        font-family: 'Montserrat';
-        font-size: 12px;
-        line-height: 20px;
-        letter-spacing: 0.02em;
-        color: #292930;
-        max-width: 630px;
-    }
-
-    .agreement_prgf {
-        margin: 0;
-    }
-</style>

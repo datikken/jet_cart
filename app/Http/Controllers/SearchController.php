@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Converter;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
 class SearchController extends Controller
 {
+    public function __construct(Converter $converter)
+    {
+        $this->converter = $converter;
+    }
+
     public function search(Request $request)
     {
         $payload = $request->payload;
@@ -45,7 +51,7 @@ class SearchController extends Controller
             $mtrxVal = stripos($params->tip_printera, 'Принтер матричный');
 
             // reorganizing product cape for sres
-            $p['cape'] = $this->reorganizeProductCape($p);
+            $p['cape'] = $this->reorganizeProductCape($p['cape']);
 
             if($flowVal === 0) {
                 array_push($flows, $p);
@@ -67,25 +73,8 @@ class SearchController extends Controller
         return response()->json($separatedPrdcts);
     }
 
-    public function reorganizeProductCape($prdct)
+    public function reorganizeProductCape($cape)
     {
-        $result = array();
-        $oldCape = json_decode($prdct->cape);
-
-        if($oldCape) {
-            foreach ($oldCape as $item) {
-                $br = $item->brand;
-                $md = $item->model;
-
-                if(!array_key_exists($br, $result)) {
-                    $result[$br] = array();
-                    array_push($result[$br], $md);
-                } else {
-                    array_push($result[$br], $md);
-                }
-            }
-        }
-
-        return $result;
+        return $this->converter->uniqueObjectKeysCvsValues($cape);
     }
 }

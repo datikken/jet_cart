@@ -186,7 +186,7 @@
                                     <span>{{ index.brand }}</span>
                                 </div>
                                 <div class="prdet_table_item_inner">
-                                    <span>{{ index.model }}</span>
+                                    <span v-for="md in index.data">{{ md.model }}</span>
                                 </div>
                             </div>
 
@@ -233,8 +233,16 @@
                 let paramObj = JSON.parse(this.product.params);
                 let capeObj = JSON.parse(this.product.cape);
 
+                let result = Object.values(capeObj.reduce((a,{brand, ...props})=>{
+                    if(!a[brand])
+                        a[brand] = Object.assign([], {brand, data : [props]});
+                    else
+                        a[brand].data.push(props);
+                    return a;
+                },{}));
+
                 this.product.params = paramObj;
-                this.cape = capeObj;
+                this.cape = result;
             }
         }
     };

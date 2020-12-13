@@ -52,4 +52,25 @@ class Converter
 
         return $str;
     }
+
+    function uniqueObjectKeysCvsValues($oldCape)
+    {
+        $result = array();
+
+        if($oldCape) {
+            foreach (json_decode($oldCape) as $item) {
+                $br = $item->brand;
+                $md = $item->model;
+
+                if(!array_key_exists($br, $result)) {
+                    $result[$br] = array();
+                    array_push($result[$br], $md);
+                } else {
+                    array_push($result[$br], $md);
+                }
+            }
+        }
+
+        return $result;
+    }
 }
