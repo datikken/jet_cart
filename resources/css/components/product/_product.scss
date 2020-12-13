@@ -246,10 +246,9 @@
         }
       }
       &_image2 {
-        background-image: url("/img/unnecessary/product2.png") !important;
+
       }
       &_image {
-        background-image: url("/img/unnecessary/product1.png");
         @include bg(contain, center);
         width: 177px;
         height: 100px;

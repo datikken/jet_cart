@@ -1,4 +1,16 @@
 .prdet {
+    &_close {
+        background-image: url('/images/icons/prdet_close.svg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 30px;
+        right: 20px;
+        width: 12px;
+        height: 12px;
+        cursor: pointer;
+    }
     &_table {
         &_head,&_item {
             display: grid;

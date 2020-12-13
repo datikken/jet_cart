@@ -45,8 +45,6 @@ let addProductToCart = function (state, {id, amount}) {
             return response.json();
         })
         .then((data) => {
-            console.log('new cart', data);
-
             that.dispatch('CHECK_CART_STATE');
         })
 
@@ -62,9 +60,10 @@ let addProductToCart = function (state, {id, amount}) {
 }
 
 
-let getProductById = function (state, id) {
-    let product = state.products.filter((el) => el.id === id)
-    state.singleProduct = product[0];
+let getProductById = function (state, prd) {
+    state.singleProduct = prd;
+
+    return state.singleProduct;
 }
 
 let setProductsLoaded = function (state) {

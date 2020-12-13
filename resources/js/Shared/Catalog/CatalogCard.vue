@@ -35,7 +35,7 @@
                     <span class="product_wrapper-item_head-item">IC-HLOR70A</span>
                 </div>
                 <div class="product_wrapper-item_price">
-                    <span class="product_wrapper-item_price-item">{{ data.price }}</span>
+                    <span class="product_wrapper-item_price-item">{{ price }}</span>
                     <img src="/images/icons/rub.svg" alt="cur"/>
                 </div>
 
@@ -60,12 +60,16 @@
             TextBtn
         },
         data: () => ({
-            params: {}
+            params: {},
+            price: ''
         }),
         methods: {
             ...mapActions(['SEND_GOOGLE_ANALYTICS']),
             loadProductModal(id) {
-                this.$store.dispatch('GET_PRODUCT_BY_ID', id);
+                let prd = this.$page.products.filter((el) => el.id === id);
+
+                this.$store.dispatch('GET_PRODUCT_BY_ID', prd);
+
                 let gObj = {
                     category: 'catalog modal',
                     eventAction: 'click',
@@ -78,6 +82,7 @@
         },
         created() {
             this.params = JSON.parse(this.$props.data.params)
+            this.price = parseInt(this.$props.data.price);
         }
     }
 </script>

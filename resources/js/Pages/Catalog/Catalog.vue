@@ -73,7 +73,7 @@
                                          :key="item.name"/>
                         </div>
 
-                        <Modal/>
+                     <Modal />
 
                     </div>
                 </div>
