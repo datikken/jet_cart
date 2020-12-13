@@ -240,6 +240,7 @@
     width: 300px!important;
     height: 50px!important;
     background: #E34A02!important;
+    color: #fff;
     margin: 0 auto;
     margin-top: 30px;
     border-radius: 30px;
@@ -247,7 +248,7 @@
     align-items: center;
     justify-content: center;
 
-    .text_btn-item {
+    span {
         font-family: $font;
         font-weight: 600;
         font-size: 18px;
