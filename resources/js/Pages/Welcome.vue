@@ -11,8 +11,11 @@
             </div>
             <div class="main_column">
                 <Sales/>
+
                 <NumsSwiper/>
                 <SalesEco />
+                <SalesBest  />
+
             </div>
         </div>
 
@@ -32,7 +35,8 @@
     import MainLayout from '@/Layouts/MainLayout'
     import SalesEco from '@/Shared/Sales/SalesEco'
     import Owl from '@/Shared/Owl/Owl'
-    import Viewed from "../Shared/Viewed/Viewed";
+    import Viewed from "@/Shared/Viewed/Viewed";
+    import SalesBest from '@/Shared/Sales/SalesBest'
 
     export default {
         name: "Welcome",
@@ -40,6 +44,7 @@
             images: []
         }),
         components: {
+            SalesBest,
             Viewed,
             Header,
             Menu,
