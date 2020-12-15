@@ -32,8 +32,22 @@ class CartController extends Controller
         $cartTotal = Cart::total();
         $qnt = Cart::count();
 
+        $newCartItems = array();
+
+        foreach ($cartContent as $k => $cnt) {
+            $photo = $cnt->model->findProductImage();
+            $name = $cnt->model->artikul;
+
+            $cnt->photo = $photo;
+            $cnt->name = $name;
+
+            $cartContent[$k] = $cnt;
+
+            array_push($newCartItems, $cartContent[$k]);
+        }
+
         return response()->json([
-            'content' => $cartContent,
+            'content' => $newCartItems,
             'qnt' => $qnt,
             'total' => $cartTotal
         ]);

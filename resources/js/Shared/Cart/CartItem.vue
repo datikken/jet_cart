@@ -7,8 +7,7 @@
 
             <div class="cart_wrap-item_inner-table_row-col_img">
                 <span @click="remove" class="remove_icon" style="background-image: url('/images/unnecessary/cart_close.svg')"></span>
-                <img class="carousel_card-wrapper_item-image" :src="data.photo"/>
-                <!--<img class="carousel_card-wrapper_item-image" onerror="this.src = '/images/unnecessary/owl-swiper.svg';" :src="data.photo"/>-->
+                <img class="carousel_card-wrapper_item-image" onerror="this.src = '/images/unnecessary/owl-swiper.svg';" :src="image"/>
             </div>
 
 
@@ -18,7 +17,7 @@
                     <span>Чёрный тонер-картридж</span>
                 </div>
                 <div class="cart_wrap-item_inner-table_row-col_desc-info">
-                    <span>{{ data.photo }}</span>
+                    <span>{{ data.name }}</span>
                 </div>
                 <div class="cart_wrap-item_inner-table_row-col_desc-about">
                     <span>для принтеров и МФУ:</span>
@@ -32,7 +31,7 @@
                 <div class="cart_wrap-item_inner-table_row-col_price-val">
                 <span class="cart_wrap-item_inner-table_row-col_price-val-item">
                     {{ data.price }}
-                    <img src="/images/icons/rub_fat.svg" alt="rub" class="cart_wrap-item-total_icon" />
+                    <img src="/images/icons/rub_fat.svg" alt="rub" />
                 </span>
                 </div>
             </div>
@@ -45,7 +44,7 @@
                         <span>Количество (шт)</span>
                     </div>
 
-                    <AmountBtn :id="data.id" :quantity="data.total" :rowId="data.rowId"/>
+                    <AmountBtn :id="data.id" :quantity="data.qty" :rowId="data.rowId"/>
 
                 </div>
             </div>
@@ -81,6 +80,9 @@
             AmountBtn
         },
         props: ['data'],
+        data: () => ({
+            image: null
+        }),
         methods: {
             ...mapActions([
                 'DELETE_PRODUCT_FROM_CART'
@@ -93,11 +95,8 @@
             }
         },
         mounted() {
-            console.warn(this.$props.data)
+            let imgjsn = JSON.parse(this.$props.data.photo);
+            this.image = imgjsn.small ? imgjsn.small : imgjsn.big
         }
     }
 </script>
-
-<style scoped>
-
-</style>

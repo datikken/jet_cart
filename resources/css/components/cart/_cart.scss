@@ -110,6 +110,7 @@
             &-total_icon {
                 position: absolute;
                 height: 12px;
+                top: 7px!important;
             }
 
             &_inner {
@@ -196,7 +197,7 @@
                                 img {
                                     position: absolute;
                                     right: -12px;
-                                    top: 5px;
+                                    top: 13px;
                                     height: 11px;
                                 }
 
@@ -376,7 +377,7 @@
 
                                 img {
                                     position: absolute;
-                                    top: 9px;
+                                    top: 12px;
                                     right: -15px;
                                 }
 
@@ -503,12 +504,9 @@
                                 }
 
                                 img {
-                                    //position: absolute;
-                                    //right: -15px;
-                                    //top: 5px;
                                     position: absolute;
                                     right: -12px;
-                                    top: 5px;
+                                    top: 13px;
                                 }
                                 &-item {
                                     font-family: $font;
@@ -548,7 +546,7 @@
                                     width: 15px;
                                     color: black;
                                     position: absolute;
-                                    left: -2rem;
+                                    left: -45px;
                                     cursor: pointer;
                                     background-image: url('/img/unnecessary/cart_close.svg');
                                     background-size: cover;

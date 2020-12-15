@@ -6,7 +6,7 @@
  * Time: 03:15
  */
 
-namespace App;
+namespace App\Traits;
 
 trait CanBeBought
 {
@@ -31,6 +31,7 @@ trait CanBeBought
         if(property_exists($this, 'name')) return $this->name;
         if(property_exists($this, 'title')) return $this->title;
         if(property_exists($this, 'description')) return $this->description;
+        if(property_exists($this, 'photo')) return $this->photo;
 
         return null;
     }
