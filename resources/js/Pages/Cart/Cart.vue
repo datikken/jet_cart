@@ -7,7 +7,7 @@
 
                 <CartEmpty v-if="Objlength === 0 " />
 
-                <CartLayout :if="Objlength > 0" :total="total" :cartItems="cartItems" />
+                <CartLayout :if="Objlength > 0" :total="total" />
 
             </div>
         </div>
@@ -28,6 +28,7 @@
         data: () => ({
             total: null
         }),
+
         components: {
             CartItem,
             CartBreadcrumbs,

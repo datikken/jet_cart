@@ -49,13 +49,35 @@
 
 <script>
     import CartItem from './CartItem';
+    import {mapState, mapActions} from 'vuex';
 
     export default {
         name: "CartLayout",
         components: {
             CartItem
         },
-        props: ['cartItems', 'total']
+        props: ['total'],
+        data: () => ({
+            cartItems: [],
+            total: false
+        }),
+        methods: {
+            ...mapActions(['CHECK_CART_STATE'])
+        },
+        mounted() {
+            this.CHECK_CART_STATE();
+        },
+        computed: {
+            ...mapState([
+                'cart'
+            ])
+        },
+        watch: {
+            cart(val, oldVal) {
+                this.cartItems = val ? val.content : oldVal.content;
+                this.total = val ? val.total : oldVal.total;
+            }
+        }
     }
 </script>
 
