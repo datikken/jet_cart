@@ -11,6 +11,7 @@
         "php": "^7.3|^8.0",
         "alfonsobries/nova-froala-editor": "^1.0",
         "bolechen/nova-activitylog": "^0.2.1",
+        "dniccum/custom-email-sender": "^2.1",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "genealabs/nova-file-upload-field": "^0.4.0",

@@ -15,6 +15,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TrackingController;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SendMailController;
+
 /*
  * Api routes
  */
@@ -85,6 +87,12 @@ Route::post('/cart.delete', [CartController::class, 'delete'])
     ->name('cart.delete');
 Route::post('/cart.update', [CartController::class, 'update'])
     ->name('cart.update');
+
+/*
+ * Emails
+ *
+ */
+
 
 
 /*
