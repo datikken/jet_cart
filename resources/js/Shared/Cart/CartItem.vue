@@ -45,7 +45,7 @@
                         <span>Количество (шт)</span>
                     </div>
 
-                    <AmountBtn :id="data.id" :quantity="data.total"/>
+                    <AmountBtn :id="data.id" :quantity="data.total" :rowId="data.rowId"/>
 
                 </div>
             </div>

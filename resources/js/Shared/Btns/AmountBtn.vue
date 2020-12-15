@@ -15,7 +15,7 @@
 <script>
     export default {
         name: "AmountBtn",
-        props: ['id', 'quantity'],
+        props: ['id', 'quantity', 'rowId'],
         data: function (){
             return {
                 quant: 1,
@@ -32,6 +32,7 @@
             },
             changeQuant(value, type) {
                 let qnt = this.$el.querySelector('.cart_wrap-item_inner-table_row-col_btns-btn-items_quantity');
+                let rowId = this.$props.rowId;
 
                 if (type === 'inc') {
                     this.quant = parseInt(this.quant) + parseInt(value);
@@ -40,8 +41,11 @@
                         this.quant = this.quant - value;
                     }
                 }
+                /*
+                Todo increment cart val
+                 */
 
-                qnt.innerText = this.quant
+                qnt.innerText = this.quant;
             }
         }
     }

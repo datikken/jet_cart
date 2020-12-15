@@ -101,14 +101,7 @@
                 this.collectAplliedFilters();
             },
             openFilter() {
-                if(!this.activated) {
-                    return
-                }
 
-                if(this.$props.filters.length === 0) {
-                    label.classList.add('pb16');
-                    return;
-                }
 
                 let img = this.$el.querySelector('img');
                 let label = this.$el.querySelector('.filters_wrapper-item_label');
@@ -120,6 +113,11 @@
 
 
                 let name = this.$el.querySelector('.filters_wrapper-item_text_name').innerText;
+
+                if(this.$props.filters.length === 0) {
+                    label.classList.add('pb16');
+                    return;
+                }
 
                 let gObj = {
                     category: 'filters',
