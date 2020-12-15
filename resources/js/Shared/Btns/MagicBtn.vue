@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: "MagicButton",
+        name: "MagicBtn",
         props: ['text', 'className'],
         methods: {
             setListener(btn) {

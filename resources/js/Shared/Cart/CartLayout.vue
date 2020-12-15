@@ -37,11 +37,7 @@
                         <img src="/images/icons/rub_fat.svg" alt="rub" class="cart_wrap-item-total_icon"/>
                     </span>
             </div>
-            <a class="cart_wrap-item_inner-total_button magic_btn" href="#">
-                    <span class="cart_wrap-item_inner-total_button-item">
-                        оформить заказ
-                    </span>
-            </a>
+            <MagicBtn text="оформить заказ" className="magic_btn"/>
         </div>
 
     </div>
@@ -50,11 +46,13 @@
 <script>
     import CartItem from './CartItem';
     import {mapState, mapActions} from 'vuex';
+    import MagicBtn from '@/Shared/Btns/MagicBtn'
 
     export default {
         name: "CartLayout",
         components: {
-            CartItem
+            CartItem,
+            MagicBtn
         },
         data: () => ({
             cartItems: [],

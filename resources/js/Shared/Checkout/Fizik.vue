@@ -57,7 +57,7 @@
     import MaskedInput from '../Inputs/MaskedInput'
     // import router from '@/router/router'
     import agreementCheck from '../Policy/agreementCheck';
-    import MagicButton from '@/Shared/Btns/MagicButton'
+    import MagicBtn from '@/Shared/Btns/MagicBtn'
 
     export default {
         name: "Fizik",
@@ -65,7 +65,7 @@
             SimpleCheckbox,
             TextBtn,
             MaskedInput,
-            MagicButton,
+            MagicBtn,
             agreementCheck
         },
         data: function () {

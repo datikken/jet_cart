@@ -5,18 +5,20 @@
         <p class="empty_cart-paragraph">Для удобства наполнения корзины, Вы можете воспользоваться поиском
             или каталогом товаров</p>
         <inertia-link :href="route('catalog')">
-            <TextBtn className="empty_cart-btn magic_btn" text="перейти в каталог" />
+            <MagicBtn className="empty_cart-btn magic_btn" text="перейти в каталог" />
         </inertia-link>
     </div>
 
 </template>
 
 <script>
+    import MagicBtn from '@/Shared/Btns/MagicBtn'
     import TextBtn from '@/Shared/Btns/TextBtn'
     export default {
         name: "CartEmpty",
         components: {
-            TextBtn
+            TextBtn,
+            MagicBtn
         }
     }
 </script>
