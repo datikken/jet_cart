@@ -134,6 +134,9 @@ let actions = {
     ADD_PRODUCT_TO_CART(context, {id, amount}) {
         context.commit('addProductToCart', {id, amount})
     },
+    UPDATE_PRODUCT_IN_CART(context, {rowId, amount}) {
+        context.commit('updateProductInCart', {rowId, amount})
+    },
     DELETE_PRODUCT_FROM_CART(context, {id}) {
         context.commit('deleteProductFromCart', {id})
     },

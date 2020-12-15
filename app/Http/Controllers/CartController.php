@@ -53,8 +53,19 @@ class CartController extends Controller
         ]);
     }
 
-    public function get()
+    public function update(Request $request)
     {
+        $request->validate([
+            'rowId' => 'required',
+            'amount' => 'required|numeric'
+        ]);
+
+        $rowId = $request->rowId;
+        $qty = $request->amount;
+
+        Cart::update($rowId, $qty);
+
+        return response()->json(['status' => 200, 'message' => 'success']);
     }
 
     public function add(Request $request)

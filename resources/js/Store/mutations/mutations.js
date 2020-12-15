@@ -13,6 +13,7 @@ import {changeProgressStep} from './cart/utils'
 import {
     getFilteredProducts,
     addProductToCart,
+    updateProductInCart,
     deleteProductFromCart,
     getProductModelFilters,
     getProductTypeFilters,
@@ -35,6 +36,7 @@ let mutations = {
 
     //cart
     addProductToCart,
+    updateProductInCart,
     deleteProductFromCart,
     //products
     getFilteredProducts,

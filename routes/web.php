@@ -79,11 +79,12 @@ Route::get('/checkCartState', [CartController::class, 'show'])
 Route::get('/cart', [CartController::class, 'index'])
     ->name('cart');
 
-Route::post('/cart.delete', [CartController::class, 'delete'])
-    ->name('cart.delete');
-
 Route::post('/cart.add', [CartController::class, 'add'])
     ->name('cart.add');
+Route::post('/cart.delete', [CartController::class, 'delete'])
+    ->name('cart.delete');
+Route::post('/cart.update', [CartController::class, 'update'])
+    ->name('cart.update');
 
 
 /*

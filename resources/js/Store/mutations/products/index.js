@@ -26,7 +26,7 @@ let getFilteredProducts = function (state, payload) {
         })
 }
 
-let deleteProductFromCart = function(state, {id}) {
+let deleteProductFromCart = function (state, {id}) {
     let that = this;
 
     fetch(`/cart.delete`, {
@@ -39,6 +39,28 @@ let deleteProductFromCart = function(state, {id}) {
         referrerPolicy: 'no-referrer',
         body: JSON.stringify({
             id
+        })
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            that.dispatch('CHECK_CART_STATE');
+        })
+}
+let updateProductInCart = function (state, {rowId, amount}) {
+    let that = this;
+
+    fetch(`/cart.update`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': window.token
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            rowId, amount
         })
     })
         .then((response) => {
@@ -241,6 +263,7 @@ let setProductViewed = function (state, {pid}) {
 
 export {
     getFilteredProducts,
+    updateProductInCart,
     addProductToCart,
     getProductModelFilters,
     getProductTypeFilters,

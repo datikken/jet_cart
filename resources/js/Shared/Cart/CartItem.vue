@@ -53,7 +53,7 @@
         <div class="cart_wrap-item_inner-table_row-col">
             <span class="desktop-hide">Общая сумма товаров (шт)</span>
             <div class="cart_wrap-item_inner-table_row-col_total">
-                {{ data.price }}
+                {{ total }}
                 <img src="/images/icons/rub_fat.svg" alt="rub" />
             </div>
         </div>
@@ -81,7 +81,8 @@
         },
         props: ['data'],
         data: () => ({
-            image: null
+            image: null,
+            total: null
         }),
         methods: {
             ...mapActions([
@@ -96,7 +97,8 @@
         },
         mounted() {
             let imgjsn = JSON.parse(this.$props.data.photo);
-            this.image = imgjsn.small ? imgjsn.small : imgjsn.big
+            this.image = imgjsn.small ? imgjsn.small : imgjsn.big;
+            this.total = this.$props.data.price * this.$props.data.qty;
         }
     }
 </script>

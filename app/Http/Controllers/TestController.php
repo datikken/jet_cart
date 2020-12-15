@@ -81,7 +81,10 @@ class TestController extends Controller
     public function index(Request $request)
     {
 
-        $this->cart->delete($request);
+        $amount = 2;
+        $rowId = "ddd5ca2eaecadc5e276c66fb5a83c2cb";
+
+        Cart::update($rowId, $amount);
 
 
 //        $prd = Product::id(1);
