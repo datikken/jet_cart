@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Facades\Cart;
 use Illuminate\Session\SessionManager;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -13,6 +14,7 @@ class CartController extends Controller
     public function __construct(SessionManager $seSmanager)
     {
         $this->seSmanager = $seSmanager;
+        $this->id = '';
     }
 
     public function index()
@@ -65,8 +67,20 @@ class CartController extends Controller
     {
     }
 
-    public function update()
+    public function delete(Request $request)
     {
+        $id = $request->id;
+        $this->id = $id;
+
+        if ($request->has('id')) {
+            $cartItem = Cart::search(function ($cartItem, $rowId) {
+                if ($cartItem->id === $this->id) {
+                    Cart::remove($rowId);
+                }
+            });
+        }
+
+        return response()->json(['status' => 200, 'message' => 'success']);
     }
 
     public function destroy()

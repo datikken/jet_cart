@@ -55,7 +55,7 @@ class CartItem implements Arrayable, Jsonable
      *
      * @var string|null
      */
-    private $associatedModel = null;
+    private $associatedModel = 'App\Models\Product';
 
     /**
      * The tax rate for the cart item.

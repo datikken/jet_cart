@@ -46,8 +46,7 @@
         },
         methods: {
             ...mapActions([
-                'CHANGE_PROGRESS_STEP',
-                'CREATE_MAGIC_BTN'
+                'CHANGE_PROGRESS_STEP'
             ]),
             pushToHome() {
                 window.location = '/';

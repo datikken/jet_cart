@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Helpers\Converter;
 use App\Facades\Cart;
+use Illuminate\Http\Request;
+
 
 class TestController extends Controller
 {
@@ -71,8 +73,15 @@ class TestController extends Controller
         Product::updateOrCreate($newDto);
     }
 
-    public function index()
+    public function __construct(CartController $controller)
     {
+        $this->cart = $controller;
+    }
+
+    public function index(Request $request)
+    {
+
+        $this->cart->delete($request);
 
 
 //        $prd = Product::id(1);

@@ -82,8 +82,7 @@
                 'VALIDATE_DELIVERY_ADRESS',
                 'SHOW_DELIVERY_TYPE_HELPER',
                 'CHECK_DELIVERY_ADRESS',
-                'BLOCK_FORM_INPUTS',
-                'CREATE_MAGIC_BTN'
+                'BLOCK_FORM_INPUTS'
             ]),
             validatePickUpPoint() {
                 let valid = false;

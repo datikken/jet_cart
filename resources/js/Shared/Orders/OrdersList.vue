@@ -93,7 +93,6 @@
             ...mapActions([
                 'FINISH_ORDER_PROCESS',
                 'CHECK_CART_STATE',
-                'CREATE_MAGIC_BTN',
                 'CREATE_ORDER',
             ]),
             pushToThanks() {
@@ -115,7 +114,6 @@
             },
             createMagic() {
                 let btn = document.querySelector('#final_btn');
-                this.CREATE_MAGIC_BTN(btn);
             }
         },
         watch: {

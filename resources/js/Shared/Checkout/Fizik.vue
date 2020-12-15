@@ -57,7 +57,7 @@
     import MaskedInput from '../Inputs/MaskedInput'
     // import router from '@/router/router'
     import agreementCheck from '../Policy/agreementCheck';
-    import MagicButton from '../Btns/MagicButton'
+    import MagicButton from '@/Shared/Btns/MagicButton'
 
     export default {
         name: "Fizik",
@@ -65,6 +65,7 @@
             SimpleCheckbox,
             TextBtn,
             MaskedInput,
+            MagicButton,
             agreementCheck
         },
         data: function () {
@@ -80,7 +81,7 @@
            this.clearInputsOnFocus();
            this.CHANGE_PROGRESS_STEP(1);
 
-           new MagicButton(this.$el.querySelector('.magic_btn'));
+           // new MagicButton(this.$el.querySelector('.magic_btn'));
         },
         computed: {
             ...mapGetters(['user','ofertaPolicy'])

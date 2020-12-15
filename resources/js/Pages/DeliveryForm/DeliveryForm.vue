@@ -119,7 +119,6 @@
                 'CHECK_DELIVERY_PICKUPS',
                 'GET_LAST_DELIVERY_ADRESS',
                 'SET_READY_TO_GO',
-                'CREATE_MAGIC_BTN',
                 'SHOW_NOTIFICATION'
             ]),
             _showAditionalForms() {
@@ -162,7 +161,7 @@
             createMagicBtn() {
                 let btn = this.$el.querySelector('#proceedToPayments');
 
-                this.CREATE_MAGIC_BTN(btn);
+                // this.CREATE_MAGIC_BTN(btn);
             },
             callPostForm() {
                 let status = this.$refs.postRef.handleValidatePostForm();

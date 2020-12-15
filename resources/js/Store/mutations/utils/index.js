@@ -1,12 +1,3 @@
-import MagicButton from '@/Shared/Btns/MagicButton';
-
-let createMagicBtn = function (state, btn) {
-    if (btn) {
-        btn.classList.remove('disabled_btn');
-        new MagicButton(btn);
-    }
-}
-
 let showNotification = function (state, msg, type) {
     state.notParams.status = type;
     state.notParams.message = msg;
@@ -25,7 +16,6 @@ let blockFormInputs = function (state, el) {
 }
 
 export {
-    createMagicBtn,
     showNotification,
     blockFormInputs
 };

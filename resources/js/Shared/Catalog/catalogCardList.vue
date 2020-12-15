@@ -95,9 +95,6 @@
     .prdLt_descItem {
         margin-bottom: 5px;
     }
-    .animated_btn {
-        margin-right: 30px;
-    }
     .prdLt_price_text {
         display: inline-block!important;
     }

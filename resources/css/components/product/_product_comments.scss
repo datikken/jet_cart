@@ -10,7 +10,7 @@
     display: flex;
     border-bottom: 1px solid $yellow;
     padding: 20px;
-    
+
     @include breakpoint($phone) {
       padding: 0 20px 20px 20px;
     }
@@ -71,7 +71,7 @@
           width: 30px;
           height: 30px;
           @include bg(cover, center);
-          background-image: url("/img/icons/like.svg");
+          background-image: url("/images/icons/like.svg");
         }
         &-text {
           font-family: $font;
@@ -120,7 +120,7 @@
         width: 70px;
         height: 70px;
         @include bg(cover, center);
-        background-image: url("/img/unnecessary/ava.png");
+        background-image: url("/images/unnecessary/ava.png");
       }
     }
   }

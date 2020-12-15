@@ -54,8 +54,7 @@
             ...mapActions([
                 'SET_DELIVERY_INDEX',
                 'SHOW_DELIVERY_TYPE_HELPER',
-                'BLOCK_FORM_INPUTS',
-                'CREATE_MAGIC_BTN'
+                'BLOCK_FORM_INPUTS'
             ]),
             setDeliveryIndex() {
                 let firstForm = document.querySelector('.first_step_form');

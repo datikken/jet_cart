@@ -8,9 +8,6 @@ let actions = {
     PROCEED_WITH_LAST_DELIVERY_ADRESS(context, adr) {
         context.commit('proceedWithLastDeliveryAdress', adr);
     },
-    CREATE_MAGIC_BTN(context,btn) {
-        context.commit('createMagicBtn',btn);
-    },
     SET_READY_TO_GO(context, val) {
         context.commit('setReadyToGo', val);
     },
@@ -136,6 +133,9 @@ let actions = {
     },
     ADD_PRODUCT_TO_CART(context, {id, amount}) {
         context.commit('addProductToCart', {id, amount})
+    },
+    DELETE_PRODUCT_FROM_CART(context, {id}) {
+        context.commit('deleteProductFromCart', {id})
     },
     GET_PRODUCT_BY_ID(context, id) {
         context.commit('getProductById', id);

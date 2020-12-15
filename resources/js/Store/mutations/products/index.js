@@ -26,10 +26,33 @@ let getFilteredProducts = function (state, payload) {
         })
 }
 
+let deleteProductFromCart = function(state, {id}) {
+    let that = this;
+
+    fetch(`/cart.delete`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': window.token
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            id
+        })
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            that.dispatch('CHECK_CART_STATE');
+        })
+}
+
 let addProductToCart = function (state, {id, amount}) {
     let that = this;
 
-    fetch(`/addProductToCart`, {
+    fetch(`/cart.add`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -229,5 +252,6 @@ export {
     filterProductsByBrand,
     setProductsLoaded,
     getViewedProducts,
-    setProductViewed
+    setProductViewed,
+    deleteProductFromCart
 }

@@ -38,7 +38,7 @@
             let that = this;
 
             let btns = this.$el.querySelectorAll('.magic_btn')
-                btns.forEach(btn => that.CREATE_MAGIC_BTN(btn))
+                // btns.forEach(btn => that.CREATE_MAGIC_BTN(btn))
         },
         methods: {
             ...mapActions([
@@ -46,7 +46,6 @@
                 'PROCEED_WITH_LAST_DELIVERY_ADRESS',
                 'SET_ADDITIONAL_FORMS',
                 'SET_READY_TO_GO',
-                'CREATE_MAGIC_BTN',
                 'SHOW_NOTIFICATION',
                 'SET_DELIVERY_ADRESS'
             ]),

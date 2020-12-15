@@ -4,7 +4,6 @@ import axios from "axios";
 // import router from "@/router/router";
 
 import {
-    createMagicBtn,
     showNotification,
     blockFormInputs
 } from './utils/index'
@@ -14,6 +13,7 @@ import {changeProgressStep} from './cart/utils'
 import {
     getFilteredProducts,
     addProductToCart,
+    deleteProductFromCart,
     getProductModelFilters,
     getProductTypeFilters,
     filterProductsByModel,
@@ -29,13 +29,13 @@ import {
 
 let mutations = {
     //ui
-    createMagicBtn,
     showNotification,
     blockFormInputs,
     changeProgressStep,
 
     //cart
     addProductToCart,
+    deleteProductFromCart,
     //products
     getFilteredProducts,
     getProductModelFilters,

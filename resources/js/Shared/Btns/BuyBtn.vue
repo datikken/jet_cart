@@ -19,7 +19,8 @@
                 'ADD_PRODUCT_TO_CART'
             ]),
             addProductToCart: function() {
-                let amount = parseInt(document.querySelector('[data-modal-val]').innerText);
+                let val = document.querySelector('[data-modal-val]');
+                let amount = parseInt(val ? val.innerText : 1);
                 let id = this.$props.id;
 
                 this.$store.dispatch('ADD_PRODUCT_TO_CART', {id, amount});
