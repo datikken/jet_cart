@@ -83,6 +83,10 @@
             display: flex;
             align-items: center;
 
+            &:last-child {
+                border-right: none;
+            }
+
             @include breakpoint($medium) {
                 margin-left: 17px;
             }
