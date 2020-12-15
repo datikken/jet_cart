@@ -56,7 +56,6 @@
         components: {
             CartItem
         },
-        props: ['total'],
         data: () => ({
             cartItems: [],
             total: false

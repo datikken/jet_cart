@@ -7,7 +7,7 @@
 
                 <CartEmpty v-if="Objlength === 0 " />
 
-                <CartLayout :if="Objlength > 0" :total="total" />
+                <CartLayout v-if="Objlength != 0 "/>
 
             </div>
         </div>
@@ -21,14 +21,19 @@
     import {Fragment} from 'vue-fragment'
     import CartItem from "@/Shared/Cart/CartItem";
     import CartLayout from '@/Shared/Cart/CartLayout'
+    import {mapState, mapActions} from 'vuex';
 
     export default {
         name: "Cart",
         layout: MainLayout,
         data: () => ({
-            total: null
+            Objlength: false,
+            cartTotal: false,
+            cartItems: null
         }),
-
+        methods: {
+            ...mapActions(['CHECK_CART_STATE'])
+        },
         components: {
             CartItem,
             CartBreadcrumbs,
@@ -36,10 +41,20 @@
             CartEmpty,
             CartLayout
         },
-        created() {
-            this.cartItems = this.$page.cart.original.content;
-            this.total = this.$page.cart.original.total;
-            this.Objlength = Object.keys(this.cartItems).length;
+        computed: {
+            ...mapState([
+                'cart'
+            ])
+        },
+        mounted() {
+            this.CHECK_CART_STATE();
+        },
+        watch: {
+            cart(val, oldVal) {
+                this.cartItems = val ? val.content : oldVal.content;
+                this.Objlength = Object.keys(this.cartItems).length;
+                this.cartTotal = val ? val.total : oldVal.total;
+            }
         }
     }
 </script>
