@@ -110,7 +110,7 @@
 
 <script>
     import LastOrder from './LastOrder'
-    import TextBtn from '../btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     import {mapActions, mapGetters, mapState} from 'vuex'
 
     export default {

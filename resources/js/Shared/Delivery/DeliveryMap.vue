@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import TextBtn from '../Btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     import {mapActions} from 'vuex'
 
     export default {

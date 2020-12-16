@@ -34,7 +34,7 @@
 
 <script>
     import {mapActions,mapGetters} from 'vuex'
-    import TextBtn from '../Btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     import SimpleCheckbox from '../Checkboxes/SimpleCheckbox'
     import CardPayment from './CardPayment'
 

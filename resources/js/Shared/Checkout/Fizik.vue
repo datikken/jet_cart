@@ -52,7 +52,7 @@
 
 <script>
     import SimpleCheckbox from '../Checkboxes/SimpleCheckbox'
-    import TextBtn from '../Btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     import {mapActions,mapGetters} from 'vuex'
     import MaskedInput from '../Inputs/MaskedInput'
     // import router from '@/router/router'

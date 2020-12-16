@@ -78,7 +78,7 @@
 
 <script>
     import {mapActions, mapGetters} from 'vuex'
-    import TextBtn from '../btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     // import router from '../../router/router'
 
     export default {

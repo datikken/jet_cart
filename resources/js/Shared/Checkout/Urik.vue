@@ -115,7 +115,7 @@
     import {mapActions, mapGetters} from 'vuex'
     import MaskedInput from '../Inputs/MaskedInput'
     import {Observable} from "rxjs/Rx"
-    import TextBtn from '../Btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     // import router from '@/router/router'
 
     export default {

@@ -53,7 +53,7 @@
 </template>
 
 <script>
-    import TextBtn from '../Btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     import DeliveryIndex from "./DeliveryIndex"
     import { mapGetters, mapActions } from 'vuex'
 

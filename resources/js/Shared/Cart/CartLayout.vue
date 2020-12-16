@@ -24,7 +24,7 @@
         <div class="cart_content">
 
 
-            <CartItem v-for="cartItem in cartItems" :data="cartItem"/>
+            <CartItem v-for="cartItem in cartItems" :data="cartItem" :key="cartItems.id"/>
 
 
         </div>

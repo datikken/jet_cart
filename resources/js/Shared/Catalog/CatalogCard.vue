@@ -48,8 +48,8 @@
 </template>
 
 <script>
-    import BuyBtn from '../Btns/BuyBtn';
-    import TextBtn from '../Btns/TextBtn';
+    import BuyBtn from '@/Shared/Btns/BuyBtn';
+    import TextBtn from '@/Shared/Btns/TextBtn';
     import {mapActions} from 'vuex'
 
     export default {

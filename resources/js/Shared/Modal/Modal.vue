@@ -199,10 +199,10 @@
 </template>
 
 <script>
-    import PriceBtn from "../Btns/PriceBtn";
-    import BuyBtn from "../Btns/BuyBtn";
-    import AmountBtn from "../Btns/AmountBtn";
-    import TextBtn from "../Btns/TextBtn";
+    import PriceBtn from "@/Shared/Btns/PriceBtn";
+    import BuyBtn from "@/Shared/Btns/BuyBtn";
+    import AmountBtn from "@/Shared/Btns/AmountBtn";
+    import TextBtn from "@/Shared/Btns/TextBtn";
     import {mapState} from 'vuex';
 
     export default {

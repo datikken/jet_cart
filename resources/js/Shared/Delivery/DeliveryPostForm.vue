@@ -57,7 +57,7 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex';
-    import TextBtn from '../Btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
 
     export default {
         name: "DeliveryPostForm",

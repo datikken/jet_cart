@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    import TextBtn from '../Btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     import DeliveryMap from './/DeliveryMap'
     import DropdownList from '../Lists/DropdownList'
 

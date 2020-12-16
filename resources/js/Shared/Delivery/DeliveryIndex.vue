@@ -29,7 +29,7 @@
 <script>
     import {mapGetters, mapActions} from 'vuex'
     import SelfDelivery from './SelfDelivery'
-    import TextBtn from '../Btns/TextBtn';
+    import TextBtn from '@/Shared/Btns/TextBtn';
 
     export default {
         name: "DeliveryIndex",

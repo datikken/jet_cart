@@ -5,7 +5,7 @@
 <script>
     import {mapActions} from 'vuex'
     import CardDropdown from './CardDropdown'
-    import TextBtn from '../Btns/TextBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     import MaskedInput from '../Inputs/MaskedInput'
 
     export default {
