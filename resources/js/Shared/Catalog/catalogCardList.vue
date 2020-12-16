@@ -16,6 +16,7 @@
                         <div class="prdLt_descItem-right">{{ newParameters['Бренд'] }}</div>
                     </div>
 
+
                     <div class="prdLt_descItem" v-if="newParameters['Артикул']">
                         <div class="prdLt_descItem-left">Артикул</div>
                         <div class="prdLt_descItem-right">{{ newParameters['Артикул'] }}</div>
