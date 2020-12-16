@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Helpers\Converter;
-use App\Facades\Cart;
 use Illuminate\Http\Request;
-
+use App\Facades\Cart;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
@@ -81,32 +83,7 @@ class TestController extends Controller
     public function index(Request $request)
     {
 
-        $amount = 2;
-        $rowId = "ddd5ca2eaecadc5e276c66fb5a83c2cb";
 
-        Cart::update($rowId, $amount);
-
-
-//        $prd = Product::id(1);
-//        $fileJson = $this->parse();
-//        $converter = new Converter();
-
-//        foreach ($fileJson as $product) {
-//            $oldVal = (array) $product;
-//            $newProduct = array();
-//            $converter = new Converter();
-//
-//            foreach ($oldVal as $key => $val)
-//            {
-//                $newKey = $converter->translit($key);
-//                $newProduct[$newKey] = $val;
-//            }
-//
-//            $this->createProductsDto($newProduct);
-//        }
-//
-//        dump(count($fileJson));
-//        return response()->json('success');
     }
 
     public function all()

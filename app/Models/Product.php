@@ -86,4 +86,9 @@ class Product extends Model
             return $this->photo;
         }
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
 }

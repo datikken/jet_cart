@@ -4,7 +4,6 @@ namespace App\Observers;
 
 use App\Models\Order;
 use App\Mail\OrderCreated;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
