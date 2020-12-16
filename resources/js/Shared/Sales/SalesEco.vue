@@ -4,8 +4,8 @@
 
             <div class="sales_eco-wrapper_item">
                 <div class="sales_eco-wrapper_item-head">
-                    <p><span>Баннер</span><br/>
-                        Рассказывающий про программу <span>эко</span>
+                    <p><span>Баннер</span>
+                        Рассказывающий про программу  <span>эко</span>
                     </p>
                 </div>
                 <div class="sales_eco-wrapper_item-desc">
