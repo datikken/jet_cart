@@ -17,6 +17,7 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\OrderController;
+use App\Actions\Fortify\Login;
 
 /*
  * Api routes
@@ -25,9 +26,14 @@ Route::group(['middleware' => 'ajax'], function () {
     Route::post('/search', [SearchController::class, 'search'])
         ->name('search');
 });
+
 //Users API
 Route::post('/createNewUser', [CreateNewUser::class, 'create'])
     ->name('CreateNewUser');
+Route::post('/login', [Login::class, 'login'])
+    ->name('login');
+
+
 Route::get('/sendEmailVerification', [UserController::class, 'index'])
     ->name('sendEmailVerification');
 

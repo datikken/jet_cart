@@ -5,20 +5,27 @@
             <div class="card">
                 <div class="card-header">Вход</div>
                 <div class="card-greet">
-                    <p class="card-greet_text" data-auth>
+                    <p class="card-greet_text" v-if="sieg">
                         С возвращением.
                         Войдите в свой аккаунт
                     </p>
+
+                    <p class="card-greet_text">
+                        <InputError :message="form.error('email')"/>
+                        <InputError :message="form.error('password')"/>
+                    </p>
+
                 </div>
                 <div class="card-body login-form">
-                    <form method="POST" action="login" data-loginForm="true">
+                    <div class="form">
                         <div class="form-group row">
                             <InputError :message="form.error('email')" class="mt-2"/>
 
                             <label for="email" class="row_label form_group_label">Почта</label>
                             <input type="email"
                                    v-model="form.email"
-                                   placeholder="Введите вашу почту" class="form-control" name="email" id="email" autofocus>
+                                   placeholder="Введите вашу почту" class="form-control" name="email" id="email"
+                                   autofocus>
                         </div>
                         <div class="form-group row password_field mb20">
                             <span class="password_field-label"></span>
@@ -29,7 +36,8 @@
                                 <input
                                     v-model="form.password"
                                     id="password"
-                                    type="password" placeholder="Введите ваш пароль"  class="form-control" name="password">
+                                    type="password" placeholder="Введите ваш пароль" class="form-control"
+                                    name="password">
                             </div>
                         </div>
 
@@ -38,9 +46,7 @@
                             <div class="agreement_check">
                                 <div class="form-check">
 
-                                    <!--@include('components.checkbox.simple_check', ['name' => 'remember'])-->
-
-                                    <label class="form-check-label" for="remember">
+                                    <label class="form-check-label">
                                         Запомнить меня
                                     </label>
                                 </div>
@@ -50,9 +56,9 @@
                             </div>
                         </div>
 
-                        <TextBtn text="Войти" className="yellow_btn" @click.native="login" />
+                        <TextBtn text="Войти" className="yellow_btn" @click.native="login"/>
 
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,6 +78,7 @@
         },
         data() {
             return {
+                sieg: true,
                 form: this.$inertia.form({
                     email: '',
                     password: ''
@@ -80,9 +87,22 @@
                 })
             }
         },
+        mounted() {
+            if(this.$page.errors && this.$page.errors.login) {
+                this.sieg = false;
+            }
+        },
         methods: {
             login() {
                 this.$inertia.post('/login', this.form)
+                    .then(() => {
+                        if (this.$page.errors && this.$page.errors.login) {
+                            this.sieg = false
+                        }
+                    });
+
+
+                console.log();
             }
         }
     }

@@ -10,15 +10,14 @@
                         Зарегистрируйте свой аккаунт используя любой способ
                     </p>
 
-                    <InputError :message="form.error('email')" />
-                    <InputError :message="form.error('password')" />
-                    <InputError :message="form.error('policy_confirm')" />
+                    <!--<InputError :message="form.error('email')" />-->
+                    <!--<InputError :message="form.error('password')" />-->
+                    <!--<InputError :message="form.error('policy_confirm')" />-->
 
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" data-registerForm="true">
-
+                    <div class="form">
                         <div class="form-group row">
                             <span class="form_group_label">
                                 Вы регистрируетесь как
@@ -89,7 +88,7 @@
 
                         <TextBtn text="Регистрация" className="yellow_btn" @click.native="register" />
 
-                    </form>
+                    </div>
 
 
                 </div>

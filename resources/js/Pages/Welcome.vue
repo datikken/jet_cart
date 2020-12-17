@@ -13,8 +13,8 @@
                 <Sales/>
 
                 <NumsSwiper/>
-                <SalesEco />
                 <SalesBest  />
+                <SalesEco />
 
             </div>
         </div>
