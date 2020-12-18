@@ -28,10 +28,3 @@
         }
     }
 </script>
-
-<style>
-    .product_wrapper-item_price-text {
-        margin-right: 10px;
-    }
-
-</style>
