@@ -6,6 +6,7 @@
     &_descItem {
         display: grid;
         grid-template-columns: 200px 1fr;
+        margin-bottom: 5px;
         &-left {}
         &-right {
             font-family: $semifont;
@@ -62,6 +63,7 @@
 
         &_text {
             position: relative;
+            display: inline-block!important;
         }
 
         img {

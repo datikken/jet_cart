@@ -91,12 +91,3 @@
         }
     }
 </script>
-
-<style>
-    .prdLt_descItem {
-        margin-bottom: 5px;
-    }
-    .prdLt_price_text {
-        display: inline-block!important;
-    }
-</style>
