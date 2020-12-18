@@ -161,11 +161,12 @@
                 list-style: none;
                 padding: 0;
                 left: -29px;
-                top: 38px;
+                top: 30px;
                 width: 200px;
                 overflow: hidden;
                 transition: height $transition;
                 box-shadow: $menu_shadow;
+                max-height: 237px;
 
                 &-item {
                     background-color: $white;
