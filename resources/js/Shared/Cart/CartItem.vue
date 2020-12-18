@@ -97,7 +97,7 @@
         },
         mounted() {
             let imgjsn = JSON.parse(this.$props.data.photo);
-            this.image = imgjsn.small ? imgjsn.small : imgjsn.big;
+            this.image = imgjsn ? imgjsn.small : imgjsn.big;
             this.total = this.$props.data.price * this.$props.data.qty;
         }
     }

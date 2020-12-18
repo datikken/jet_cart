@@ -19,8 +19,6 @@ class TrackingController extends Controller
             'email' => 'required|email'
         ]);
 
-
-
         return Inertia::render('Tracking/TrackingStatus', [
             'state' => $state
         ]);

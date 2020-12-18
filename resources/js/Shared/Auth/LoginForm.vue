@@ -10,11 +10,6 @@
                         Войдите в свой аккаунт
                     </p>
 
-                    <p class="card-greet_text">
-                        <InputError :message="form.error('email')"/>
-                        <InputError :message="form.error('password')"/>
-                    </p>
-
                 </div>
                 <div class="card-body login-form">
                     <div class="form">
@@ -101,8 +96,14 @@
                         }
                     });
 
+                let err = this.$inertia.page.props.errors.email;
 
-                console.log();
+                if(err) {
+                    this.sieg = false
+                }
+
+
+                console.log(this.$page.errors);
             }
         }
     }
