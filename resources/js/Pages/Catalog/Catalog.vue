@@ -106,9 +106,7 @@
     import Modal from '@/Shared/Modal/Modal'
     import TextBtn from '@/Shared/Btns/TextBtn'
     import VueAdsPagination, {VueAdsPageButton} from 'vue-ads-pagination';
-    import 'NODE/@fortawesome/fontawesome-free/css/all.css';
-    import 'NODE/vue-ads-pagination/dist/vue-ads-pagination.css';
-
+    
     export default {
         name: "Checkout",
         data: function () {
