@@ -106,7 +106,7 @@
     import Modal from '@/Shared/Modal/Modal'
     import TextBtn from '@/Shared/Btns/TextBtn'
     import VueAdsPagination, {VueAdsPageButton} from 'vue-ads-pagination';
-    
+
     export default {
         name: "Checkout",
         data: function () {
@@ -163,9 +163,3 @@
         }
     }
 </script>
-
-<style>
-    .cart_check-wrapper {
-        display: flex;
-    }
-</style>

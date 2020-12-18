@@ -3,7 +3,6 @@
         margin-bottom: 150px;
     }
 }
-
 .columns {
   @include breakpoint($phone) {
     width: 100%;

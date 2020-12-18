@@ -2,8 +2,9 @@
     @include breakpoint($medium) {
         margin-bottom: 300px;
     }
-
-
+    &_check-wrapper {
+        display: flex;
+    }
     &_content {
         position: relative;
 
