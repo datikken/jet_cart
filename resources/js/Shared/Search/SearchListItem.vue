@@ -1,5 +1,5 @@
 <template>
-    <a class="sres_item" v-bind:href="link" @mouseover="backgroundOnHover" @mouseleave="clearBackgroundOnHover">
+    <inertia-link class="sres_item" :href="route('catalog.view', data.id)" @mouseover="backgroundOnHover" @mouseleave="clearBackgroundOnHover">
         <div class="sres_col">
             <span class="sres_col_item sres_color" v-bind:class="color"></span>
         </div>
@@ -18,7 +18,7 @@
 
             </div>
         </div>
-    </a>
+    </inertia-link>
 
 </template>
 

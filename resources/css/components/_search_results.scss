@@ -1,14 +1,14 @@
 .sres {
     &_close {
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
         background-image: url('/images/icons/search_close.svg');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         position: absolute;
-        top: 12px;
-        right: 10px;
+        top: 20px;
+        right: 15.5px;
         z-index: 999;
         cursor: pointer;
     }
