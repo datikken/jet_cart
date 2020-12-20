@@ -33,7 +33,8 @@ class Slider extends Resource
         'id',
         'title',
         'description',
-        'image'
+        'image',
+        'link'
     ];
 
     /**
@@ -50,6 +51,8 @@ class Slider extends Resource
             Text::make("Title", "title")
                 ->sortable()
                 ->rules("required", "max:255"),
+            Textarea::make("Description"),
+
             FileUpload::make("Image", "path")
                 ->thumbnail(function ($image) {
                     return $image
@@ -58,8 +61,7 @@ class Slider extends Resource
                 })
                 ->disk("local")
                 ->path("slider_images")
-                ->prunable(),
-            Textarea::make("Description"),
+                ->prunable()
         ];
     }
 

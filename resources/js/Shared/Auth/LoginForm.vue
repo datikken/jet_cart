@@ -5,11 +5,11 @@
             <div class="card">
                 <div class="card-header">Вход</div>
                 <div class="card-greet">
-                    <p class="card-greet_text" v-if="sieg">
-                        С возвращением.
+                    <p class="card-greet_text" v-show="sieg">
+                        С возвращением.<br/>
                         Войдите в свой аккаунт
                     </p>
-                    <p class="card-greet_text" v-if="!sieg" :class="{error: !sieg}">
+                    <p class="card-greet_text" v-show="!sieg" :class="{error: !sieg}">
                         <InputError :message="form.error('email')" />
                         <InputError :message="form.error('password')" />
                     </p>
@@ -20,8 +20,12 @@
 
                             <label for="email" class="row_label form_group_label">Почта</label>
                             <input type="email"
+                                   :keyup="login"
                                    v-model="form.email"
-                                   placeholder="Введите вашу почту" class="form-control" name="email" id="email"
+                                   placeholder="Введите вашу почту" class="form-control"
+                                   name="email"
+                                   id="email"
+                                   autocomplete="email"
                                    autofocus>
                         </div>
                         <div class="form-group row password_field mb20">
@@ -33,7 +37,11 @@
                                 <input
                                     v-model="form.password"
                                     id="password"
-                                    type="password" placeholder="Введите ваш пароль" class="form-control"
+                                    v-on:keyup="login"
+                                    type="password"
+                                    placeholder="Введите ваш пароль"
+                                    class="form-control"
+                                    autocomplete="current-password"
                                     name="password">
                             </div>
                         </div>
@@ -104,18 +112,16 @@
                 }
             },
             login() {
-                this.$inertia.post('/login', this.form)
-                    .then(() => {
-                        if (this.$page.errors && this.$page.errors.login) {
+                this.$inertia.post('/login', this.form, {
+                    onFinish: () => {
+                        if (this.$page.errors.login) {
                             this.sieg = false
+                            return;
                         }
-                    });
 
-                let err = this.$inertia.page.props.errors.email;
-
-                if(err) {
-                    this.sieg = false
-                }
+                        this.sieg = true;
+                    }
+                })
             }
         }
     }

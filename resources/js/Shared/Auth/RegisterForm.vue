@@ -7,7 +7,7 @@
                 <div class="card-greet register_greet">
 
                     <p class="card-greet_text" v-if="sieg">
-                        Зарегистрируйте свой аккаунт используя любой способ
+                        Зарегистрируйте свой аккаунт<br/> используя любой способ
                     </p>
 
                     <p class="card-greet_text" v-if="!sieg" :class="{error: !sieg}">
@@ -51,7 +51,8 @@
                             <label for="email" class="form_group_label col-md-4 col-form-label text-md-right">Почта</label>
 
                             <div class="col-md-6">
-                                <input id="email"type="email"
+                                <input id="emailReg"type="email"
+                                       v-on:keyup="register"
                                        v-model="form.email"
                                        data-email placeholder="Введите вашу почту" class="form-control" name="email" value="" autocomplete="email">
                             </div>
@@ -62,7 +63,8 @@
                             <label for="password" class="form_group_label col-md-4 col-form-label text-md-right">Пароль</label>
 
                             <div class="col-md-6">
-                                <input id="password"
+                                <input id="passwordReg"
+                                       v-on:keyup="register"
                                        v-model="form.password"
                                        data-required placeholder="Введите пароль" type="password" class="form-control password_input" name="password" autocomplete="new-password">
                             </div>
@@ -74,6 +76,7 @@
 
                             <div class="col-md-6">
                                 <input id="password_confirmation"
+                                       v-on:keyup="register"
                                        v-model="form.password_confirmation"
                                        data-required placeholder="Подтвердите пароль" type="password" class="form-control password_input" name="password_confirmation" autocomplete="new-password">
                             </div>
@@ -149,18 +152,15 @@
                 this.form.policy_confirm = !this.form.policy_confirm
             },
             register() {
-                this.$inertia.post('/createNewUser', this.form)
-                    .then(() => {
-                        if (this.$page.errors && this.$page.errors.login) {
+                this.$inertia.post('/createNewUser', this.form, {
+                    onFinish: () => {
+                        if (this.$page.errors.createNewUser) {
                             this.sieg = false
+                        } else {
+                            this.sieg = true;
                         }
-                    });
-
-                let err = this.$inertia.page.props.errors;
-
-                if(err) {
-                    this.sieg = false
-                }
+                    }
+                })
             },
             changeUserType(str) {
                 this.form.type = str;

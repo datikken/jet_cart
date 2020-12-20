@@ -20,16 +20,20 @@ class Login
             'password' => 'required|min:6',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        if($state) {
+            $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
 
-            return Inertia::render('Dashboard');
+                return Inertia::render('Dashboard');
+            }
+
+            return back()->withErrors([
+                'email' => 'Проверьте правильность данных.',
+            ]);
+        } else {
+            return false;
         }
-
-        return back()->withErrors([
-            'email' => 'Проверьте правильность данных.',
-        ]);
     }
 }

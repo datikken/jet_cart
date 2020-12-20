@@ -33,13 +33,22 @@ class CreateNewUser
             'policy_confirm' => 'accepted'
         ]);
 
-        User::create([
-            'name' => $name,
-            'email' => $email,
-            'password' => Hash::make($pass),
-            'face' => $type
-        ]);
+        if($state) {
+            User::create([
+                'name' => $name,
+                'email' => $email,
+                'password' => Hash::make($pass),
+                'face' => $type
+            ]);
 
-        return Inertia::render('Dashboard');
+            return Inertia::render('Dashboard');
+        } else {
+            return response()->json('this form got errors');
+        }
+    }
+
+    public function validateOnPress(Request $request)
+    {
+
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSlidersTable extends Migration
+class AddSlidersLink extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,8 @@ class CreateSlidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('sliders', function (Blueprint $table) {
-            $table->id();
-            $table->text('title')->nullable();
-            $table->text('description')->nullable();
-            $table->text('path');
+        Schema::table('sliders', function (Blueprint $table) {
             $table->text('link')->nullable();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
         });
     }
 
