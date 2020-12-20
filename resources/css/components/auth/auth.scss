@@ -245,6 +245,7 @@
                     align-items: center;
                     height: 100%;
                     justify-content: center;
+                    color: #fff;
 
                     .form_type-itemText {
                         span {
@@ -273,6 +274,8 @@
             &_text {
                 margin: 20px 0;
                 text-align: left;
+                max-height: 28px;
+                overflow: auto;
             }
         }
         .card-header {

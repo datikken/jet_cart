@@ -6,14 +6,15 @@
 
                 <div class="card-greet register_greet">
 
-                    <p class="card-greet_text">
+                    <p class="card-greet_text" v-if="sieg">
                         Зарегистрируйте свой аккаунт используя любой способ
                     </p>
 
-                    <!--<InputError :message="form.error('email')" />-->
-                    <!--<InputError :message="form.error('password')" />-->
-                    <!--<InputError :message="form.error('policy_confirm')" />-->
-
+                    <p class="card-greet_text" v-if="!sieg" :class="{error: !sieg}">
+                        <InputError :message="form.error('email')" />
+                        <InputError :message="form.error('password')" />
+                        <InputError :message="form.error('policy_confirm')" />
+                    </p>
                 </div>
 
                 <div class="card-body">
@@ -25,12 +26,12 @@
 
                             <div class="form_type">
                                 <div class="form_type-item">
-                                    <div class="form_type-itemText">
+                                    <div class="form_type-itemText" @click="changeUserType('urik')" data-face="urik">
                                         <span class="form_type-itemText_inner">Юр. лицо</span>
                                     </div>
                                 </div>
-                                <div class="form_type-item activeFormItem">
-                                    <div class="form_type-itemText">
+                                <div class="form_type-item">
+                                    <div class="form_type-itemText activeFormItem" @click="changeUserType('fizik')" data-face="fizik">
                                         <span class="form_type-itemText_inner">Физ. лицо</span>
                                     </div>
                                 </div>
@@ -57,7 +58,7 @@
                         </div>
 
                         <div class="form-group row password_field">
-
+                            <span class="password_field-label" data-togglePass="password" @click="(evnt) => togglePass(evnt, 'password')"></span>
                             <label for="password" class="form_group_label col-md-4 col-form-label text-md-right">Пароль</label>
 
                             <div class="col-md-6">
@@ -68,7 +69,7 @@
                         </div>
 
                         <div class="form-group row password_field">
-
+                            <span class="password_field-label" data-togglePass="password" @click="(evnt) => togglePass(evnt, 'password_confirmation')"></span>
                             <label for="password_confirmation" class="form_group_label col-md-4 col-form-label password_hide text-md-right">Подтверждение пароля</label>
 
                             <div class="col-md-6">
@@ -113,23 +114,66 @@
         props: ['name'],
         data() {
             return {
+                sieg: true,
                 form: this.$inertia.form({
                     name: 'Пользователь',
                     email: '',
                     password: '',
                     password_confirmation: '',
                     policy_confirm: false,
+                    type: 'fizik'
                 }, {
                     bag: 'createNewUser'
                 })
             }
         },
+        mounted() {
+            if(this.$page.errors && this.$page.errors.login) {
+                this.sieg = false;
+            }
+        },
         methods: {
+            togglePass(evnt, name) {
+                let query = `[name=${name}]`;
+
+                let passField = this.$el.querySelector(query);
+                this.passShown = !this.passShown;
+
+                if(this.passShown) {
+                    passField.setAttribute('type', 'password');
+                } else {
+                    passField.setAttribute('type', 'text');
+                }
+            },
             confirmPolicy() {
                 this.form.policy_confirm = !this.form.policy_confirm
             },
             register() {
                 this.$inertia.post('/createNewUser', this.form)
+                    .then(() => {
+                        if (this.$page.errors && this.$page.errors.login) {
+                            this.sieg = false
+                        }
+                    });
+
+                let err = this.$inertia.page.props.errors;
+
+                if(err) {
+                    this.sieg = false
+                }
+            },
+            changeUserType(str) {
+                this.form.type = str;
+
+                let blocks = this.$el.querySelectorAll('[data-face]');
+                    blocks.forEach((block) => {
+                        block.classList.remove('activeFormItem');
+
+                        if(block.getAttribute('data-face') === str) {
+                            block.classList.add('activeFormItem');
+                        }
+
+                    })
             }
         }
     }

@@ -9,12 +9,14 @@
                         С возвращением.
                         Войдите в свой аккаунт
                     </p>
-
+                    <p class="card-greet_text" v-if="!sieg" :class="{error: !sieg}">
+                        <InputError :message="form.error('email')" />
+                        <InputError :message="form.error('password')" />
+                    </p>
                 </div>
                 <div class="card-body login-form">
                     <div class="form">
                         <div class="form-group row">
-                            <InputError :message="form.error('email')" class="mt-2"/>
 
                             <label for="email" class="row_label form_group_label">Почта</label>
                             <input type="email"
@@ -23,9 +25,9 @@
                                    autofocus>
                         </div>
                         <div class="form-group row password_field mb20">
-                            <span class="password_field-label"></span>
+                            <span class="password_field-label" data-togglePass @click="(evnt) => togglePass(evnt)"></span>
 
-                            <label for="email" class="row_label password_hide form_group_label">Пароль</label>
+                            <label for="password" class="row_label password_hide form_group_label">Пароль</label>
 
                             <div class="col-md-6">
                                 <input
@@ -64,16 +66,19 @@
 <script>
     import InputError from '@/Jetstream/InputError'
     import TextBtn from '@/Shared/Btns/TextBtn'
+    import SimpleCheckbox from '@/Shared/Checkboxes/SimpleCheckbox'
 
     export default {
         name: "LoginForm",
         components: {
             InputError,
-            TextBtn
+            TextBtn,
+            SimpleCheckbox
         },
         data() {
             return {
                 sieg: true,
+                passShown: false,
                 form: this.$inertia.form({
                     email: '',
                     password: ''
@@ -88,6 +93,16 @@
             }
         },
         methods: {
+            togglePass(evnt) {
+                let passField = this.$el.querySelector('[name="password"]');
+                this.passShown = !this.passShown;
+
+                if(this.passShown) {
+                    passField.setAttribute('type', 'password');
+                } else {
+                    passField.setAttribute('type', 'text');
+                }
+            },
             login() {
                 this.$inertia.post('/login', this.form)
                     .then(() => {
@@ -101,9 +116,6 @@
                 if(err) {
                     this.sieg = false
                 }
-
-
-                console.log(this.$page.errors);
             }
         }
     }
