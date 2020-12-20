@@ -38,7 +38,7 @@
         created:function(data) {
             this.link = '/product/' + this.$props.data.id
             this.cape = this.$props.data.cape;
-            let col = JSON.parse(this.$props.data.params).color;
+            let col = JSON.parse(this.$props.data.params).cvet;
 
             this.color = renameColor(col);
         },
@@ -48,9 +48,21 @@
                     this.$el.classList.add(this.color);
                     this.$el.style.color = '#fff';
 
-                    if(this.color === 'tripleCol') {
-                        this.color = 'tripleCol';
-                        this.$el.style.color = 'black';
+                    switch(col) {
+                        case undefined: this.color = 'blackCol'
+                            break;
+                        case 'Черный': this.color = 'blackCol'
+                            break;
+                        case 'Трехцветный': this.color = 'tripleCol'
+                            break;
+                        case 'Голубой': this.color = 'blueCol'
+                            break;
+                        case 'Пурпурный': this.color = 'purpleCol'
+                            break;
+                        case 'Желтый': this.color = 'yellowCol'
+                            break;
+                        default: 'blackCol'
+                            break;
                     }
                 }
             },
