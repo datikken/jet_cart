@@ -48,7 +48,6 @@
     import DeliverySelf from '@/Shared/Delivery/DeliverySelf'
 
     import { mapGetters, mapActions } from 'vuex'
-    // import router from '../router/router'
 
     export default {
         name: "DeliveryForm",
@@ -172,12 +171,12 @@
                 let ready = false;
 
                 if(this.deliveryType === 'stock') {
-                   if(this.stockDeliveryPickup) {
-                       ready = true;
-                   } else {
-                       let errBlock = this.$el.querySelector('[data-deliveryPickupError]')
-                           errBlock.classList.remove('as-none');
-                   }
+                    if(this.stockDeliveryPickup) {
+                        ready = true;
+                    } else {
+                        let errBlock = this.$el.querySelector('[data-deliveryPickupError]')
+                        errBlock.classList.remove('as-none');
+                    }
                 }
 
                 if(this.deliveryType === 'self') {
