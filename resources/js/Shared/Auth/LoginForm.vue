@@ -49,6 +49,8 @@
 
                         <div class="form-group row mb20">
                             <div class="agreement_check">
+                                <SimpleCheckbox name="agreement" @click.native="confirmPolicy" />
+
                                 <div class="form-check">
 
                                     <label class="form-check-label">

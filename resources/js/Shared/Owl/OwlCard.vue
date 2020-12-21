@@ -1,5 +1,5 @@
 <template>
-    <div class="item">
+    <inertia-link :href="route('catalog.view', prdct.id)" class="item">
         <div class="carousel_card">
             <div class="carousel_card-wrapper">
 
@@ -45,7 +45,7 @@
 
             </div>
         </div>
-    </div>
+    </inertia-link>
 
 </template>
 
