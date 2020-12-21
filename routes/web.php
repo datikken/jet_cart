@@ -18,6 +18,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\OrderController;
 use App\Actions\Fortify\Login;
+use App\Http\Controllers\CheckoutController;
 
 /*
  * Api routes
@@ -108,14 +109,12 @@ Route::post('/order.update', [OrderController::class, 'update'])
 Route::post('/order.delete', [OrderController::class, 'delete'])
     ->name('order.delete');
 
-
-
 /*
- * Emails
+ * Checkout
  *
  */
-
-
+Route::get('/checkout', [CheckoutController::class, 'get'])
+    ->name('checkout');
 
 /*
  * Test routes

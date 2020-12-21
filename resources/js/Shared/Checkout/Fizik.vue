@@ -142,13 +142,14 @@
                 }
             },
             fillInputsData() {
-                let locUser = this.user.user[0];
+                let locUser = this.$page.user;
                 let name = this.$el.querySelector('[name="name"]');
                 let lastName = this.$el.querySelector('[name="lastname"]');
-                    name.value = locUser.name;
-                    lastName.value = locUser.lastname;
 
-                    this.phone = locUser.tel
+                    name.value = locUser.name ? locUser.name : '';
+                    lastName.value = locUser.lastname ? locUser.lastname : '';
+
+                    this.phone = locUser.tel ? locUser.tel : '';
             },
             setFormError() {
                 this.groups && this.groups.forEach(grp => {

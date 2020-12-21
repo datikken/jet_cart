@@ -37,7 +37,9 @@
                         <img src="/images/icons/rub_fat.svg" alt="rub" class="cart_wrap-item-total_icon"/>
                     </span>
             </div>
-            <MagicBtn text="оформить заказ" className="magic_btn"/>
+            <inertia-link :href="route('checkout')">
+                <MagicBtn text="оформить заказ" className="magic_btn"/>
+            </inertia-link>
         </div>
 
     </div>

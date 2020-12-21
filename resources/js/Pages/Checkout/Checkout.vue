@@ -1,11 +1,14 @@
 <template>
-    <div class="cart_check-wrapper">
+    <Fragment>
+        <Breadcrumbs/>
+        <div class="cart_check-wrapper">
 
-        <Fizik v-if="this.userFace === 'fizik' "/>
-        <Urik v-if="this.userFace === 'urik' "/>
+            <Fizik v-if="this.userFace === 'fizik' "/>
+            <Urik v-if="this.userFace === 'urik' "/>
 
-        <!--<OrderList v-if="this.$store.state.user"/>-->
-    </div>
+            <!--<OrderList v-if="this.$store.state.user"/>-->
+        </div>
+    </Fragment>
 </template>
 
 <script>
@@ -14,6 +17,9 @@
     import Loader from '@/Shared/Loader/Loader'
     import OrderList from '@/Shared/Orders/OrdersList'
     import {mapGetters, mapActions} from 'vuex'
+    import MainLayout from '@/Layouts/MainLayout'
+    import Breadcrumbs from '@/Shared/Breadcrumbs/Breadcrumbs'
+    import {Fragment} from 'vue-fragment'
 
     export default {
         name: "Checkout",
@@ -22,11 +28,14 @@
                 userFace: null
             }
         },
+        layout: MainLayout,
         components: {
             Fizik,
             Urik,
             Loader,
             OrderList,
+            Breadcrumbs,
+            Fragment
         },
         methods: {
             ...mapActions([
