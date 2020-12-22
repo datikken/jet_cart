@@ -48,9 +48,3 @@
         }
     }
 </script>
-
-<style>
-    .cart_check-wrapper {
-        display: flex;
-    }
-</style>
