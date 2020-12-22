@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "alfonsobries/nova-froala-editor": "^1.0",
+        "artesaos/seotools": "^0.19.1",
         "bolechen/nova-activitylog": "^0.2.1",
         "dniccum/custom-email-sender": "^2.1",
         "fideloper/proxy": "^4.4",
