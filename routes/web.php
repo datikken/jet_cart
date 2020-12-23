@@ -34,10 +34,11 @@ Route::post('/createNewUser', [CreateNewUser::class, 'create'])
 Route::post('/login', [Login::class, 'login'])
     ->name('login');
 
+
 Route::post('/setName', [UserController::class, 'setName'])
     ->name('setName');
-Route::post('/setLastname', [UserController::class, 'setLastname'])
-    ->name('setLastname');
+Route::post('/setLastName', [UserController::class, 'setLastName'])
+    ->name('setLastName');
 Route::post('/setTel', [UserController::class, 'setTel'])
     ->name('setTel');
 

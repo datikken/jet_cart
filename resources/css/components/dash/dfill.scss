@@ -32,21 +32,6 @@
                 padding: 0 5px;
             }
         }
-
-        &_btn {
-            width: 270px!important;
-            height: 40px;
-            box-shadow: none!important;
-        }
-
-        form {
-            button {
-                -webkit-appearance: none;
-                -moz-appearance:    none;
-                appearance:         none;
-                border: none;
-            }
-        }
         .form-group {
             margin-bottom: 20px;
 
@@ -103,6 +88,7 @@
                     background-size: contain;
                     background-position: center;
                     background-repeat: no-repeat;
+                    background-image: url('/images/dash/dash_avatar.svg');
                 }
             }
 
@@ -126,6 +112,11 @@
                         outline: none;
                         background: $light_gray;
                         width: 100px;
+                        top: 68%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transform: translate(0, -50%);
 
                         span {
                             font-family: $font;

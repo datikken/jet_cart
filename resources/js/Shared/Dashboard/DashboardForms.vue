@@ -10,7 +10,7 @@
 
                     <form action="/home/userAvatar" method="post" class="invisible" enctype="multipart/form-data">
 
-                        <input type="file" class="upload_file" name="img" id="img" required>
+                        <input type="file" class="upload_file" name="img" id="img">
                         <button type="submit">send</button>
                     </form>
 
@@ -19,60 +19,63 @@
                 </div>
                 <div class="dfill_wrap-form_top-right">
                     <div class="dfill_wrap-form_top-right_inner">
-                        <form class="form-group one_input_form" enctype="multipart/form-data" action="/home/collectProfileData" method="get">
+                        <div class="form-group one_input_form">
 
                             <label for="name">Имя <span>*</span></label>
                             <div class="input_wrap">
 
-                                <input type="text" class="form-control" name="name" placeholder="Имя" required value="">
+                                <input type="text" class="form-control" name="name" placeholder="Имя" v-model="name">
 
-                                <button class="form-group-btn" type="submit">
+                                <div class="form-group-btn" @click="setName">
                                     <span>
                                         изменить
                                     </span>
-                                </button>
+                                </div>
                             </div>
-                        </form>
+                        </div>
 
-                        <form class="form-group one_input_form" enctype="multipart/form-data" action="/home/collectProfileData" method="get">
+                        <div class="form-group one_input_form">
 
                             <label for="name">Фамилия <span>*</span></label>
                             <div class="input_wrap">
-                                <input type="text" class="form-control" name="lastname" placeholder="Фамилия" required value="">
-                                <button class="form-group-btn" type="submit">
+                                <input type="text" class="form-control" name="lastname" placeholder="Фамилия"
+                                       v-model="last_name">
+                                <div class="form-group-btn" @click="setLastName">
                                      <span>
                                         изменить
                                     </span>
-                                </button>
+                                </div>
                             </div>
-                        </form>
+                        </div>
 
-                        <form class="form-group one_input_form" enctype="multipart/form-data" action="/home/collectProfileData" method="get">
+                        <div class="form-group one_input_form">
 
                             <label for="name">Телефон <span>*</span></label>
 
                             <div class="input_wrap">
-                                <input type="number" class="form-control" name="tel" placeholder="Телефон" required value="">
-                                <button class="form-group-btn" type="submit">
+                                <input type="number" class="form-control" name="tel" placeholder="Телефон"
+                                       v-model="tel">
+                                <div class="form-group-btn" @click="setTel">
                                     <span>
                                         изменить
                                     </span>
-                                </button>
+                                </div>
                             </div>
-                        </form>
+                        </div>
 
-                        <form class="form-group one_input_form" enctype="multipart/form-data" action="/home/collectProfileData" method="get">
+                        <div class="form-group one_input_form">
 
                             <label for="name">Адрес электронной почты <span>*</span></label>
-                            <div class="input_wrap" data-required>
-                                <input type="text" class="form-control" name="email" placeholder="Адрес электронной почты" value="">
-                                <button class="form-group-btn" type="submit">
+                            <div class="input_wrap" data>
+                                <input type="text" class="form-control" name="email"
+                                       placeholder="Адрес электронной почты" v-model="email">
+                                <div class="form-group-btn">
                                     <span>
                                         изменить
                                     </span>
-                                </button>
+                                </div>
                             </div>
-                        </form>
+                        </div>
 
                     </div>
                 </div>
@@ -82,26 +85,27 @@
         <a class="dfill_change" href="#">изменить пароль</a>
 
         <div class="dchange">
-            <form action="" method="post" enctype="multipart/form-data">
 
                 <div class="form-group input_wrap">
                     <label for="name">Действуйщий пароль<span>*</span></label>
-                    <input id="password" type="password" class="form-control" name="current_password" autocomplete="off">
+                    <input id="password" type="password" class="form-control" name="current_password"
+                           autocomplete="off">
                 </div>
 
                 <div class="form-group input_wrap">
                     <label for="name">Новый пароль<span>*</span></label>
-                    <input id="new_password" type="password" class="form-control" name="new_password" autocomplete="off">
+                    <input id="new_password" type="password" class="form-control" name="new_password"
+                           autocomplete="off">
                 </div>
 
                 <div class="form-group input_wrap">
                     <label for="name">Подтвердите новый пароль<span>*</span></label>
-                    <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password">
+                    <input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password"
+                           autocomplete="current-password">
                 </div>
 
-                <TextBtn className="dchange_btn animated_btn action_btn" text="Сохранить изменения" />
+                <MagicBtn className="magic_btn" text="Сохранить изменения"/>
 
-            </form>
 
             <div class="dchange_remind">
                 <p>Поля отмеченые <span>*</span> обязательны к заполнению</p>
@@ -111,12 +115,79 @@
 </template>
 
 <script>
-    import TextBtn from '@/Shared/Btns/TextBtn'
+    import MagicBtn from '@/Shared/Btns/MagicBtn'
 
     export default {
         name: "DashboardForms",
+        data: () => ({
+            name: '',
+            last_name: '',
+            tel: '',
+            email: ''
+        }),
+        mounted() {
+            let user = this.$page.user;
+
+            this.name = user.name;
+            this.last_name = user.last_name;
+            this.tel = user.tel;
+            this.email = user.email;
+        },
+        methods: {
+            setName() {
+                let url = '/setName';
+                let dataObj = {
+                    name: this.name
+                }
+
+                this.ajaxCall(url, dataObj)
+            },
+            setLastName() {
+                let url = '/setLastName';
+                let dataObj = {
+                    last_name: this.last_name
+                }
+
+                this.ajaxCall(url, dataObj)
+            },
+            setTel() {
+                let url = '/setTel';
+                let dataObj = {
+                    tel: this.tel
+                }
+
+                this.ajaxCall(url, dataObj)
+            },
+            setEmail() {
+                let url = '/email';
+                let dataObj = {
+                    email: this.email
+                }
+
+                this.ajaxCall(url, dataObj)
+            },
+            ajaxCall(url, dataObj) {
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': window.token
+                    },
+                    redirect: 'follow',
+                    referrerPolicy: 'no-referrer',
+                    body: JSON.stringify(dataObj)
+                })
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(text => {
+                        return console.log(text);
+                    })
+                    .catch(error => console.error(error));
+            }
+        },
         components: {
-            TextBtn
+            MagicBtn
         }
     }
 </script>

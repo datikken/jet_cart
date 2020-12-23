@@ -239,7 +239,7 @@ return [
         'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
         'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
-        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
+        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class
     ],
 
 ];
