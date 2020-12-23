@@ -6,14 +6,15 @@
             <Fizik v-if="this.userFace === 'fizik' "/>
             <Urik v-if="this.userFace === 'urik' "/>
 
-            <!--<OrderList v-if="this.$store.state.user"/>-->
+            <OrderList v-if="this.userFace" />
+
         </div>
     </Fragment>
 </template>
 
 <script>
-    import Fizik from '@/Shared/Checkout/Fizik'
-    import Urik from '@/Shared/Checkout/Urik'
+    import Fizik from '@/Shared/Customer/Fizik'
+    import Urik from '@/Shared/Customer/Urik'
     import Loader from '@/Shared/Loader/Loader'
     import OrderList from '@/Shared/Orders/OrdersList'
     import {mapGetters, mapActions} from 'vuex'
@@ -45,6 +46,10 @@
         mounted() {
             // this.CHANGE_PROGRESS_STEP(1);
             this.userFace = this.$page.user ? this.$page.user.face : 'fizik';
+
+            if(this.$page.user === null) {
+                this.$inertia.visit('login')
+            }
         }
     }
 </script>

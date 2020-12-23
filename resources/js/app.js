@@ -2,6 +2,7 @@ require('./bootstrap');
 require('moment');
 require('./ExternalLibs/owl.carousel.min');
 
+import vueDebounce from 'vue-debounce'
 import Vue from 'vue';
 import VueMeta from 'vue-meta'
 import PortalVue from 'portal-vue';
@@ -34,5 +35,8 @@ Vue.use(InertiaForm);
 Vue.use(PortalVue);
 Vue.use(Fragment.Plugin)
 Vue.use(VueMeta)
-
+Vue.use(vueDebounce, {
+    listenTo: ['input', 'keyup'],
+    defaultTime: '1000ms'
+})
 Vue.mixin({methods: {route}});

@@ -88,8 +88,8 @@
 </template>
 
 <script>
-    import Fizik from '@/Shared/Checkout/Fizik'
-    import Urik from '@/Shared/Checkout/Urik'
+    import Fizik from '@/Shared/Customer/Fizik'
+    import Urik from '@/Shared/Customer/Urik'
     import Loader from '@/Shared/Loader/Loader'
     import OrderList from '@/Shared/Orders/OrdersList'
     import {mapGetters, mapActions} from 'vuex'

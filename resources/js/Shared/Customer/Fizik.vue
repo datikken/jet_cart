@@ -32,7 +32,7 @@
                     <label for="required" class="form_group_message">Поле телефон обязательно к заполнению</label>
                 </div>
 
-                <TextBtn className="magic_btn" text="продолжить" @click.native="checkFormStepsBeforeProceed"/>
+                <MagicBtn className="magic_btn" text="продолжить" @click.native="checkFormStepsBeforeProceed"/>
             </div>
 
             <div class="cart_check-wrap_item cart_save_data">
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <agreementCheck refs="oferta"/>
+            <agreementCheck refs="oferta" />
 
         </div>
     </div>
@@ -52,10 +52,8 @@
 
 <script>
     import SimpleCheckbox from '../Checkboxes/SimpleCheckbox'
-    import TextBtn from '@/Shared/Btns/TextBtn'
     import {mapActions,mapGetters} from 'vuex'
     import MaskedInput from '../Inputs/MaskedInput'
-    // import router from '@/router/router'
     import agreementCheck from '../Policy/agreementCheck';
     import MagicBtn from '@/Shared/Btns/MagicBtn'
 
@@ -63,7 +61,6 @@
         name: "Fizik",
         components: {
             SimpleCheckbox,
-            TextBtn,
             MaskedInput,
             MagicBtn,
             agreementCheck
@@ -146,10 +143,10 @@
                 let name = this.$el.querySelector('[name="name"]');
                 let lastName = this.$el.querySelector('[name="lastname"]');
 
-                    name.value = locUser.name ? locUser.name : '';
-                    lastName.value = locUser.lastname ? locUser.lastname : '';
+                    name.value = locUser ? locUser.name : '';
+                    lastName.value = locUser ? locUser.lastname : '';
 
-                    this.phone = locUser.tel ? locUser.tel : '';
+                    this.phone = locUser ? locUser.tel : '';
             },
             setFormError() {
                 this.groups && this.groups.forEach(grp => {

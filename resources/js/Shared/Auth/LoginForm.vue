@@ -9,9 +9,14 @@
                         С возвращением.<br/>
                         Войдите в свой аккаунт
                     </p>
+
+                    <p class="card-greet_text" v-show="emailError" :class="{error: !sieg}">
+                       {{ emailError }}
+                    </p>
+
                     <p class="card-greet_text" v-show="!sieg" :class="{error: !sieg}">
-                        <InputError :message="form.error('email')" />
-                        <InputError :message="form.error('password')" />
+                        <InputError :message="form.error('email')"/>
+                        <InputError :message="form.error('password')"/>
                     </p>
                 </div>
                 <div class="card-body login-form">
@@ -20,7 +25,7 @@
 
                             <label for="email" class="row_label form_group_label">Почта</label>
                             <input type="email"
-                                   :keyup="login"
+                                   v-on:keyup="validate"
                                    v-model="form.email"
                                    placeholder="Введите вашу почту" class="form-control"
                                    name="email"
@@ -29,7 +34,8 @@
                                    autofocus>
                         </div>
                         <div class="form-group row password_field mb20">
-                            <span class="password_field-label" data-togglePass @click="(evnt) => togglePass(evnt)"></span>
+                            <span class="password_field-label" data-togglePass
+                                  @click="(evnt) => togglePass(evnt)"></span>
 
                             <label for="password" class="row_label password_hide form_group_label">Пароль</label>
 
@@ -37,7 +43,7 @@
                                 <input
                                     v-model="form.password"
                                     id="password"
-                                    v-on:keyup="login"
+                                    v-on:keyup="validate"
                                     type="password"
                                     placeholder="Введите ваш пароль"
                                     class="form-control"
@@ -49,7 +55,7 @@
 
                         <div class="form-group row mb20">
                             <div class="agreement_check">
-                                <SimpleCheckbox name="agreement" @click.native="confirmPolicy" />
+                                <SimpleCheckbox name="agreement" @click.native="confirmPolicy"/>
 
                                 <div class="form-check">
 
@@ -77,6 +83,8 @@
     import InputError from '@/Jetstream/InputError'
     import TextBtn from '@/Shared/Btns/TextBtn'
     import SimpleCheckbox from '@/Shared/Checkboxes/SimpleCheckbox'
+    import {passwordLength} from "@/functions/validation/passwordLength";
+    import {validateEmail} from "@/functions/validation/validateEmail";
 
     export default {
         name: "LoginForm",
@@ -89,6 +97,7 @@
             return {
                 sieg: true,
                 passShown: false,
+                emailError: false,
                 form: this.$inertia.form({
                     email: '',
                     password: ''
@@ -98,7 +107,7 @@
             }
         },
         mounted() {
-            if(this.$page.errors && this.$page.errors.login) {
+            if (this.$page.errors && this.$page.errors.login) {
                 this.sieg = false;
             }
         },
@@ -107,10 +116,22 @@
                 let passField = this.$el.querySelector('[name="password"]');
                 this.passShown = !this.passShown;
 
-                if(this.passShown) {
+                if (this.passShown) {
                     passField.setAttribute('type', 'password');
                 } else {
                     passField.setAttribute('type', 'text');
+                }
+            },
+            validate() {
+                let emailStat = validateEmail(this.form.email);
+                let passStat = passwordLength(this.form.password);
+
+                if(typeof emailStat === 'string') {
+                    this.sieg = false
+                    this.emailError = emailStat;
+                } else {
+                    this.sieg = true;
+                    this.emailError = false;
                 }
             },
             login() {

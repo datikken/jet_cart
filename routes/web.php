@@ -34,6 +34,14 @@ Route::post('/createNewUser', [CreateNewUser::class, 'create'])
 Route::post('/login', [Login::class, 'login'])
     ->name('login');
 
+Route::post('/setName', [UserController::class, 'setName'])
+    ->name('setName');
+Route::post('/setLastname', [UserController::class, 'setLastname'])
+    ->name('setLastname');
+Route::post('/setTel', [UserController::class, 'setTel'])
+    ->name('setTel');
+
+
 
 Route::get('/sendEmailVerification', [UserController::class, 'index'])
     ->name('sendEmailVerification');
