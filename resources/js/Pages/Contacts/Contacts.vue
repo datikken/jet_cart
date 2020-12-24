@@ -1,7 +1,9 @@
 <template>
     <Fragment>
         <div id="map" class="ymaps"></div>
+
         <ContactsForms/>
+
     </Fragment>
 </template>
 
