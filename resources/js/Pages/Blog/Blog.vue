@@ -19,6 +19,9 @@
             BlogPostsList,
             Fragment,
             Breadcrumbs
+        },
+        mounted() {
+            console.warn('st')
         }
     }
 </script>
