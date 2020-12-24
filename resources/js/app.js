@@ -13,6 +13,7 @@ import {InertiaForm} from 'laravel-jetstream';
 import store from './Store/store';
 import Fragment from 'vue-fragment'
 import LoadScript from 'vue-plugin-load-script';
+import moment from 'moment'
 
 const app = document.getElementById('app');
 
@@ -37,6 +38,11 @@ Vue.use(PortalVue);
 Vue.use(Fragment.Plugin)
 Vue.use(VueMeta)
 Vue.use(LoadScript);
+Vue.filter('formatDate', function(value) {
+    if (value) {
+        return moment(String(value)).format('MM.DD.YYYY')
+    }
+});
 Vue.use(vueDebounce, {
     listenTo: ['input', 'keyup'],
     defaultTime: '1000ms'

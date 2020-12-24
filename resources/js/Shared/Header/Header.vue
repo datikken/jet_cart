@@ -16,10 +16,10 @@
                     <li class="header_wrapper-item_menu-item">
                         <inertia-link preserve-scroll :href="route('information')" class="header_wrapper-item_menu-item_link">Информация</inertia-link>
                         <ul class="header_wrapper-item_menu-item-secondary">
-                            <a class="header_wrapper-item_menu-item-secondary_item"
-                               href="/information#test">
+                            <inertia-link class="header_wrapper-item_menu-item-secondary_item"
+                               :href="route('information')">
                                 <li>Test</li>
-                            </a>
+                            </inertia-link>
                         </ul>
                     </li>
                     <li class="header_wrapper-item_menu-item">

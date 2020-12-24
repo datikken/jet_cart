@@ -3,24 +3,23 @@ const cssNesting = require('postcss-nesting')
 const mix = require('laravel-mix')
 const path = require('path')
 const purgecss = require('@fullhuman/postcss-purgecss')
-const tailwindcss = require('tailwindcss')
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/css/app.scss', 'public/css/app.css')
     .options({
-        postCss: [
-            cssImport(),
-            cssNesting(),
-            tailwindcss('tailwind.config.js'),
-            ...mix.inProduction() ? [
-                purgecss({
-                    content: ['./resources/js/**/*.vue'],
-                    defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
-                    whitelistPatternsChildren: [/nprogress/],
-                }),
-            ] : [],
-        ],
+        // postCss: [
+        //     cssImport(),
+        //     cssNesting(),
+        //     ...mix.inProduction() ? [
+        //         purgecss({
+        //             content: ['./resources/js/**/*.vue'],
+        //             defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
+        //             whitelistPatternsChildren: [/nprogress/],
+        //         }),
+        //     ] : [],
+        // ],
     })
+    .extract()
     .webpackConfig({
         output: {chunkFilename: 'js/[name].js?id=[chunkhash]'},
         resolve: {

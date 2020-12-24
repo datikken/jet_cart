@@ -5,7 +5,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\HitsController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\ProductController;
@@ -90,7 +90,7 @@ Route::get('/information', [InformationController::class, 'index'])
 Route::get('/hits', [HitsController::class, 'index'])
     ->name('hits');
 
-Route::get('/blog', [BlogController::class, 'index'])
+Route::get('/blog', [PostController::class, 'index'])
     ->name('blog');
 
 Route::get('/about', [AboutController::class, 'index'])
