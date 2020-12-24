@@ -21,7 +21,7 @@
             Breadcrumbs
         },
         mounted() {
-            console.warn('st')
+            console.warn('st3')
         }
     }
 </script>
