@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
 use Vexilo\NovaFroalaEditor\NovaFroalaEditor;
 use Laravel\Nova\Fields\BelongsTo;
+use Spatie\TagsField\Tags;
 
 class Post extends Resource
 {
@@ -45,11 +46,12 @@ class Post extends Resource
     {
         return [
             ID::make('ID', 'id'),
-            Text::make('category'),
-            Text::make('heading'),
-            Text::make('description'),
+            Text::make('Category'),
+            Text::make('Heading'),
+            Text::make('Description'),
+            Tags::make('Tags'),
             BelongsTo::make('User')->rules('required'),
-            NovaFroalaEditor::make('content'),
+            NovaFroalaEditor::make('Content'),
             DateTime::make('Created At')
         ];
     }

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use DigitalCreative\NovaDashboard\NovaDashboard;
+use NovaBi\NovaDashboardManager\DashboardManager;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -80,7 +82,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new \Bolechen\NovaActivitylog\NovaActivitylog(),
             new \Infinety\Filemanager\FilemanagerTool(),
-            \Vyuldashev\NovaPermission\NovaPermissionTool::make()
+            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
+            new DashboardManager(),
+            new NovaDashboard()
         ];
     }
 

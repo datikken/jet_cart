@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+    use \Spatie\Tags\HasTags;
 
     protected $guarded = [];
     protected $fillable = [
