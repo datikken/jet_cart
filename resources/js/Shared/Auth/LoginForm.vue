@@ -83,8 +83,8 @@
     import InputError from '@/Jetstream/InputError'
     import TextBtn from '@/Shared/Btns/TextBtn'
     import SimpleCheckbox from '@/Shared/Checkboxes/SimpleCheckbox'
-    import {passwordLength} from "@/functions/validation/passwordLength";
-    import {validateEmail} from "@/functions/validation/validateEmail";
+    import {passwordLength} from "@/vanilla/functions/validation/passwordLength";
+    import {validateEmail} from "@/vanilla/functions/validation/validateEmail";
 
     export default {
         name: "LoginForm",

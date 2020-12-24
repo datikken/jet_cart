@@ -9,42 +9,27 @@
 
     <script
         src="https://polyfill.io/v3/polyfill.min.js?features=smoothscroll,NodeList.prototype.forEach,Promise,Object.values,Object.assign"
-        defer></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=String.prototype.startsWith" defer></script>
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/vendors/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/vendors/owl.theme.default.min.css') }}">
+        defer>
+    </script>
 
     <link href="/images/icons/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-    <!-- Swiper library -->
-    <link href="https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@5.3.6/js/swiper.min.js"></script>
+
+{{--        <link rel="stylesheet" href="{{ asset('css/vendors/owl.carousel.min.css') }}">--}}
+{{--        <link rel="stylesheet" href="{{ asset('css/vendors/owl.theme.default.min.css') }}">--}}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.15/dist/css/uikit.min.css"/>
-
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.15/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.15/dist/js/uikit-icons.min.js"></script>
 
     <link rel="stylesheet" href="{{ asset('css/vendors/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendors/pagination.min.css') }}">
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
 </head>
 <body class="font-sans antialiased">
+
 @routes
 @inertia
-
-<? $route = Route::current(); if($route->uri === 'contacts') { ?>
-    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
-<? } ?>
-
-@endphp
 
 <script src="{{ mix('js/app.js') }}" defer></script>
 </body>

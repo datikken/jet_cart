@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import {renameColor} from '@/functions/renameColor'
+    import {renameColor} from '@/vanilla/functions/renameColor'
 
     export default {
         name: "SearchListItem",

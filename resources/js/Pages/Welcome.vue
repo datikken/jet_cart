@@ -1,25 +1,25 @@
 <template>
     <div>
 
-        <MainSwiper />
+        <MainSwiper/>
 
         <div class="columns desktop-layout">
             <div class="left_column">
                 <Banner/>
-                <FeedList />
-                <Viewed />
+                <FeedList/>
+                <Viewed/>
             </div>
             <div class="main_column">
                 <Sales/>
 
                 <NumsSwiper/>
-                <SalesBest  />
-                <SalesEco />
+                <SalesBest/>
+                <SalesEco/>
 
             </div>
         </div>
 
-        <Owl />
+        <Owl/>
 
     </div>
 </template>
@@ -43,6 +43,17 @@
         data: () => ({
             images: []
         }),
+        mounted() {
+            let that = this;
+
+            this.$loadScript("https://cdn.jsdelivr.net/npm/swiper@5.3.6/js/swiper.min.js")
+                .then(() => {
+                    that.initMap()
+                })
+                .catch(() => {
+                    console.error('failed to load swiper script')
+                });
+        },
         components: {
             SalesBest,
             Viewed,
@@ -59,3 +70,9 @@
         layout: MainLayout
     }
 </script>
+
+<style>
+    @import "https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css";
+    @import "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css";
+    @import "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css";
+</style>

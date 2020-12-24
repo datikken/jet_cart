@@ -15,13 +15,13 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TrackingController;
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\OrderController;
 use App\Actions\Fortify\Login;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\FeedbackController;
 
 /*
- * Api routes
+ * Search
  */
 Route::group(['middleware' => 'ajax'], function () {
     Route::post('/search', [SearchController::class, 'search'])
@@ -42,12 +42,34 @@ Route::post('/setLastName', [UserController::class, 'setLastName'])
 Route::post('/setTel', [UserController::class, 'setTel'])
     ->name('setTel');
 
+/*
+ * Feedback API
+ */
+Route::post('/sendContactsProposal', [FeedbackController::class, 'sendContactsProposal'])
+    ->name('sendContactsProposal');
 
+/*
+ * Orders API
+ */
+Route::get('/order.get', [OrderController::class, 'get'])
+    ->name('order.get');
 
+Route::get('/order.create', [OrderController::class, 'create'])
+    ->name('order.create');
+Route::post('/order.update', [OrderController::class, 'update'])
+    ->name('order.update');
+Route::post('/order.delete', [OrderController::class, 'delete'])
+    ->name('order.delete');
+
+/*
+ * Emails API
+ */
 Route::get('/sendEmailVerification', [UserController::class, 'index'])
     ->name('sendEmailVerification');
 
-//Products API
+/*
+ * Products API
+ */
 Route::get('/getTenProductsWithImages', [ProductController::class, 'getTenProductsWithImages'])
     ->name('getTenProductsWithImages');
 
@@ -104,19 +126,6 @@ Route::post('/cart.delete', [CartController::class, 'delete'])
     ->name('cart.delete');
 Route::post('/cart.update', [CartController::class, 'update'])
     ->name('cart.update');
-
-/*
- * Orders
- */
-Route::get('/order.get', [OrderController::class, 'get'])
-    ->name('order.get');
-
-Route::get('/order.create', [OrderController::class, 'create'])
-    ->name('order.create');
-Route::post('/order.update', [OrderController::class, 'update'])
-    ->name('order.update');
-Route::post('/order.delete', [OrderController::class, 'delete'])
-    ->name('order.delete');
 
 /*
  * Checkout

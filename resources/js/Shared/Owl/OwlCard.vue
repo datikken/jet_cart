@@ -50,7 +50,7 @@
 </template>
 
 <script>
-    import {getProductImage} from "@/functions/getProductImage"
+    import {getProductImage} from "@/vanilla/functions/getProductImage"
     import {mapActions} from 'vuex'
 
     export default {

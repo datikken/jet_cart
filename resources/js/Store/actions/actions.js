@@ -165,8 +165,8 @@ let actions = {
     GET_MODEL_BRAND_FILTERS(context) {
         context.commit('getProductModelBrandFilters');
     },
-    SHOW_NOTIFICATION(context, msg, type) {
-        context.commit('showNotification', msg, type);
+    SHOW_NOTIFICATION(context, {msg, type}) {
+        context.commit('showNotification', {msg, type});
     }
 };
 

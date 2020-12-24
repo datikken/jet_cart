@@ -89,9 +89,7 @@
 
                             <div class="contacts_wrap-item_inner-item">
 
-                                <form class="cfeedback" method="post" action="/contacts/feedback">
-
-
+                                <div class="cfeedback">
                                     <div class="cfeedback_wrap">
                                         <div class="cfeedback_wrap-row fio_fields">
                                             <div class="cfeedback_wrap-row_item">
@@ -101,6 +99,7 @@
 
                                                 <div class="cfeedback_wrap-row_item_input">
                                                     <input type="text" name="name"
+                                                           v-model="name"
                                                            class="cfeedback_wrap-row_item_input-item"
                                                            placeholder="Введите ваше имя">
                                                 </div>
@@ -113,6 +112,7 @@
 
                                                 <div class="cfeedback_wrap-row_item_input">
                                                     <input type="text" name="lastname"
+                                                           v-model="last_name"
                                                            class="cfeedback_wrap-row_item_input-item"
                                                            placeholder="Введите вашу фамилию">
                                                 </div>
@@ -131,13 +131,16 @@
 
                                             <div class="cfeedback_wrap-row_item-row">
 
-                                                <div class="cfeedback_wrap-row_item-row_inner active">
+                                                <div class="cfeedback_wrap-row_item-row_inner active" data-themeSwitch
+                                                     @click="(evnt) => themeSwitch(evnt)">
                                                     <span>Пожелания</span>
                                                 </div>
-                                                <div class="cfeedback_wrap-row_item-row_inner">
+                                                <div class="cfeedback_wrap-row_item-row_inner" data-themeSwitch
+                                                     @click="(evnt) => themeSwitch(evnt)">
                                                     <span>Вопрос</span>
                                                 </div>
-                                                <div class="cfeedback_wrap-row_item-row_inner">
+                                                <div class="cfeedback_wrap-row_item-row_inner" data-themeSwitch
+                                                     @click="(evnt) => themeSwitch(evnt)">
                                                     <span>Претензия</span>
                                                 </div>
                                             </div>
@@ -148,15 +151,17 @@
                                                 <span>Текст</span>
                                             </div>
                                             <div class="cfeedback_wrap-row_item_textarea">
-                                                <textarea name="message" id="" cols="30" rows="10"
+                                                <textarea
+                                                    v-model="text"
+                                                    name="message" id="" cols="30" rows="10"
                                                           placeholder="Напишите свое обращение. Мы будем рады ответить вам на ваши вопросы"></textarea>
                                             </div>
                                         </div>
 
-                                        <MagicBtn className="magic_btn" text="Отправить"/>
+                                        <TextBtn className="yellow_btn" text="Отправить" @click.native="submitProposal"/>
 
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -173,18 +178,75 @@
 </template>
 
 <script>
-    import MagicBtn from '@/Shared/Btns/MagicBtn'
+    import TextBtn from '@/Shared/Btns/TextBtn'
     import ContactsTiming from '@/Shared/Contacts/ContactsTiming'
+    import {mapActions} from 'vuex';
 
     export default {
         name: "ContactsForms",
         components: {
-            MagicBtn,
+            TextBtn,
             ContactsTiming
+        },
+        data: () => ({
+            name: '',
+            last_name: '',
+            text: '',
+            text_error: false
+        }),
+        methods: {
+            ...mapActions([
+                'SHOW_NOTIFICATION'
+            ]),
+            submitProposal() {
+                let theme = this.$el.querySelector('.active');
+                let span = theme.querySelector('span').innerText;
+                let that = this;
+
+                let dataObj = {
+                    name: this.name,
+                    last_name: this.last_name,
+                    text: this.text,
+                    theme: span
+                }
+
+                if(this.$page.user === null) {
+                    this.$inertia.visit('login')
+                    return;
+                }
+
+                if(this.text === '') {
+                    this.SHOW_NOTIFICATION({msg: 'Введите текст', type: 'danger'});
+                    return;
+                }
+
+                fetch('/sendContactsProposal', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': window.token
+                    },
+                    redirect: 'follow',
+                    referrerPolicy: 'no-referrer',
+                    body: JSON.stringify(dataObj)
+                })
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+                        this.SHOW_NOTIFICATION({msg: 'Успех', type: 'success'});
+                    });
+            },
+            themeSwitch(evnt) {
+                let target = evnt.currentTarget;
+
+                let allBlocks = this.$el.querySelectorAll('[data-themeSwitch]');
+                allBlocks.forEach((blck) => {
+                    blck.classList.remove('active')
+                })
+
+                target.classList.add('active');
+            }
         }
     }
 </script>
-
-<style scoped>
-
-</style>

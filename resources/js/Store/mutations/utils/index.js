@@ -1,8 +1,15 @@
-let showNotification = function (state, msg, type) {
-    state.notParams.status = type;
-    state.notParams.message = msg;
+import Notification from '@/vanilla/classes/Notification';
 
-    // let notification = new Notifications(state.notParams);
+let showNotification = function (state, {msg, type}) {
+    let notParams = {
+        status: type,
+        pos: 'top-center',
+        timeout: 2000,
+        message: msg
+    }
+
+    let notification = new Notification(notParams, msg);
+
     notification.show();
 }
 

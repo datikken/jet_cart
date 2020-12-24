@@ -18,12 +18,20 @@
             Fragment
         },
         mounted() {
-            this.initMap()
+            let that = this;
+
+            this.$loadScript("//api-maps.yandex.ru/2.1/?lang=ru_RU")
+                .then(() => {
+                    that.initMap()
+                })
+                .catch(() => {
+                    console.error('failed to load ymaps script')
+                });
         },
         methods: {
             initMap() {
                 ymaps.ready(function () {
-                    var myMap = new ymaps.Map('map', {
+                    let myMap = new ymaps.Map('map', {
                             center: [55.67967429999999, 37.6238394],
                             zoom: 17
                         }, {
@@ -40,7 +48,3 @@
         }
     }
 </script>
-
-<style>
-
-</style>

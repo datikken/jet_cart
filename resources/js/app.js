@@ -12,6 +12,7 @@ import {InertiaApp} from '@inertiajs/inertia-vue';
 import {InertiaForm} from 'laravel-jetstream';
 import store from './Store/store';
 import Fragment from 'vue-fragment'
+import LoadScript from 'vue-plugin-load-script';
 
 const app = document.getElementById('app');
 
@@ -35,8 +36,10 @@ Vue.use(InertiaForm);
 Vue.use(PortalVue);
 Vue.use(Fragment.Plugin)
 Vue.use(VueMeta)
+Vue.use(LoadScript);
 Vue.use(vueDebounce, {
     listenTo: ['input', 'keyup'],
     defaultTime: '1000ms'
 })
+
 Vue.mixin({methods: {route}});

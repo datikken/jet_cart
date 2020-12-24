@@ -46,12 +46,7 @@ let state = {
     pickUpPoint: false,
 
     //misc
-    ofertaPolicy: null,
-    notParams: {
-        status: 'success',
-        pos: 'top-center',
-        timeout: 3000
-    }
+    ofertaPolicy: null
 }
 
 export default state;
